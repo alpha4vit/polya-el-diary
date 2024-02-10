@@ -17,8 +17,7 @@ public:
     ElectronicDiary(QWidget *parent = nullptr);
     ~ElectronicDiary();
 
-private slots:
-    void on_pushButton_clicked();
+
 
 private:
     Ui::ElectronicDiary *ui;
