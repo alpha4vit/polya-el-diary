@@ -12,3 +12,9 @@ ElectronicDiary::~ElectronicDiary()
 {
     delete ui;
 }
+
+void ElectronicDiary::on_pushButton_clicked()
+{
+
+}
+
