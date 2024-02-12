@@ -2,11 +2,31 @@
 <ui version="4.0">
  <class>ElectronicDiary</class>
  <widget class="QMainWindow" name="ElectronicDiary">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>650</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>650</width>
+    <height>500</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>ElectronicDiary</string>
+   <string>Дневник от Полиночки</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -24,7 +44,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="lineEdit"/>
      </item>
      <item>
       <widget class="QLabel" name="label_2">
@@ -34,7 +54,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit_2">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_3">
@@ -65,8 +89,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>689</width>
-     <height>24</height>
+     <width>650</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
