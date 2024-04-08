@@ -3,9 +3,10 @@
 
 #include <AboutPage.h>
 #include <MainWindow.h>
-#include <MainWindowNoAuth.h>
 #include <QMainWindow>
 #include <QMessageBox>
+#include <UserService.h>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -33,7 +34,6 @@ private slots:
 private:
     Ui::ElectronicDiary *ui;
     MainWindow *mainWindow;
-    MainWindowNoAuth *mainWindowNoAuth;
     AboutPage *about;
 };
 #endif // ELECTRONICDIARY_H

@@ -17,10 +17,10 @@ ElectronicDiary::~ElectronicDiary()
 
 void ElectronicDiary::on_pushButton_3_clicked()
 {
-    QString username = "admin";
-    QString password = "123456";
-
-    if (ui->lineEdit->text() == username && ui->lineEdit_2->text() == password){
+    QString username = this->ui->lineEdit->text();
+    QString password = this->ui->lineEdit_2->text();
+    UserService userService;
+    if (userService.isExists(username, password)){
         hide();
         mainWindow = new MainWindow(this);
         mainWindow->show();
@@ -35,10 +35,9 @@ void ElectronicDiary::on_pushButton_3_clicked()
 void ElectronicDiary::on_pushButton_clicked()
 {
     hide();
-    mainWindowNoAuth = new MainWindowNoAuth();
-    mainWindowNoAuth->show();
+    mainWindow = new MainWindow(this);
+    mainWindow->show();
 }
-
 
 void ElectronicDiary::on_pushButton_2_clicked()
 {
