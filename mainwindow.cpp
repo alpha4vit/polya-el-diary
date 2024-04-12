@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow);
 void get_subjects(int group_id, Ui::MainWindow &ui, QHBoxLayout& subject_menu_layout, MainWindow *mainWindow);
 
@@ -27,8 +28,10 @@ void MainWindow::on_group_button_clicked()
 {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button) {
+        ui->tableView->setModel(nullptr);
         QString objectName = button->objectName();
         qDebug() << "Clicked on button with object name:" << objectName;
+        this->group_id = objectName.toLong();
         QLayoutItem *child;
         while ((child = ui->subject_menu->layout()->takeAt(0)) != nullptr) {
             qDebug() << "Delete^ " << child->widget()->objectName();
@@ -55,11 +58,47 @@ void MainWindow::on_subject_button_clicked()
 {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button) {
-        QString objectName = button->objectName();
-        qDebug() << "Clicked on button with object name:" << objectName;
+        long subject_id = button->objectName().toLong();
+        qDebug() << "Clicked on button with object name:" << subject_id;
+        this->subject_id = subject_id;
+        QStandardItemModel *model = new QStandardItemModel(this);
+        model->setHorizontalHeaderLabels({ tr("Фамилия") });
+        QList<Grade> grades = GradeService::get_all_by_group_and_subject(this->group_id, subject_id);
+        QSet<QString> createdCols;
+        for (int i = 0; i < grades.count(); ++i){
+            QString date = DateConverter::convertFromDb(grades.at(i).date);
+            qDebug() << date;
+            if (!createdCols.contains(date))
+            {
+                model->insertColumn(createdCols.count()+1);
+                model->setHorizontalHeaderItem(createdCols.count()+1, new QStandardItem(date));
+                createdCols.insert(date);
+            }
+        }
+        QList<Student> students = StudentService::get_all();
+        for (int i = 0; i < students.count(); ++i) {
+            Student student = students.at(i);
+            QStandardItem *itemName = new QStandardItem(student.lastname);
+            model->setItem(i, 0, itemName);
+            QList<Grade> student_grades = GradeService::get_all_by_student_and_subject(student.id, subject_id);
+            for (int col = 1; col < grades.count(); ++col) {
+                for (int gr_ind = 0; gr_ind < student_grades.count(); ++gr_ind){
+                    Grade grade = student_grades.at(gr_ind);
+                    QString date = DateConverter::convertFromDb(grade.date);
+                    if (model->horizontalHeaderItem(col)->text() == date){
+                        QModelIndex index = model->index(i, col);
+                        QVariant value = QVariant(grade.value);
+                        model->setData(index, value);
+                    }
+                }
+            }
+        }
 
+        ui->tableView->setModel(model);
     }
+
 }
+
 
 
 void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow){

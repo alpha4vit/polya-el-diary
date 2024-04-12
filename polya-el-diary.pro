@@ -10,7 +10,9 @@ CONFIG += c++17
 
 SOURCES += \
     aboutpage.cpp \
+    dateconverter.cpp \
     dbconnection.cpp \
+    gradeservice.cpp \
     groupservice.cpp \
     main.cpp \
     electronicdiary.cpp \
@@ -21,8 +23,10 @@ SOURCES += \
 
 HEADERS += \
     aboutpage.h \
+    dateconverter.h \
     dbconnection.h \
     electronicdiary.h \
+    gradeservice.h \
     groupservice.h \
     mainwindow.h \
     studentservice.h \
