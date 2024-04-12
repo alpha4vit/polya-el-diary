@@ -81,14 +81,16 @@ void MainWindow::on_subject_button_clicked()
             Student student = students.at(i);
             QStandardItem *itemName = new QStandardItem(student.lastname);
             model->setItem(i, 0, itemName);
-            QList<Grade> student_grades = GradeService::get_all_by_student_and_subject(student.id, subject_id);
-            for (int gr_ind = 0; gr_ind < student_grades.count(); ++gr_ind){
-                Grade grade = student_grades.at(gr_ind);
-                QString date = DateConverter::convertFromDb(grade.date);
-                if (createdCols.contains(date)){
-                    QModelIndex index = model->index(i, createdCols.value(date));
-                    QVariant value = QVariant(grade.value);
-                    model->setData(index, value);
+            for (int gr_ind = 0; gr_ind < grades.count(); ++gr_ind){
+                Grade grade = grades.at(gr_ind);
+                if (grade.student_id == student.id)
+                {
+                    QString date = DateConverter::convertFromDb(grade.date);
+                    if (createdCols.contains(date)){
+                        QModelIndex index = model->index(i, createdCols.value(date));
+                        QVariant value = QVariant(grade.value);
+                        model->setData(index, value);
+                    }
                 }
             }
         }
