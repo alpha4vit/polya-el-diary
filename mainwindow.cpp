@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <bits/stl_pair.h>
 
 
 void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow);
@@ -64,7 +65,7 @@ void MainWindow::on_subject_button_clicked()
         QStandardItemModel *model = new QStandardItemModel(this);
         model->setHorizontalHeaderLabels({ tr("Фамилия") });
         QList<Grade> grades = GradeService::get_all_by_group_and_subject(this->group_id, subject_id);
-        QSet<QString> createdCols;
+        QMap<QString, int> createdCols;
         for (int i = 0; i < grades.count(); ++i){
             QString date = DateConverter::convertFromDb(grades.at(i).date);
             qDebug() << date;
@@ -72,7 +73,7 @@ void MainWindow::on_subject_button_clicked()
             {
                 model->insertColumn(createdCols.count()+1);
                 model->setHorizontalHeaderItem(createdCols.count()+1, new QStandardItem(date));
-                createdCols.insert(date);
+                createdCols.insert(date, createdCols.count()+1);
             }
         }
         QList<Student> students = StudentService::get_all();
@@ -81,15 +82,13 @@ void MainWindow::on_subject_button_clicked()
             QStandardItem *itemName = new QStandardItem(student.lastname);
             model->setItem(i, 0, itemName);
             QList<Grade> student_grades = GradeService::get_all_by_student_and_subject(student.id, subject_id);
-            for (int col = 1; col < grades.count(); ++col) {
-                for (int gr_ind = 0; gr_ind < student_grades.count(); ++gr_ind){
-                    Grade grade = student_grades.at(gr_ind);
-                    QString date = DateConverter::convertFromDb(grade.date);
-                    if (model->horizontalHeaderItem(col)->text() == date){
-                        QModelIndex index = model->index(i, col);
-                        QVariant value = QVariant(grade.value);
-                        model->setData(index, value);
-                    }
+            for (int gr_ind = 0; gr_ind < student_grades.count(); ++gr_ind){
+                Grade grade = student_grades.at(gr_ind);
+                QString date = DateConverter::convertFromDb(grade.date);
+                if (createdCols.contains(date)){
+                    QModelIndex index = model->index(i, createdCols.value(date));
+                    QVariant value = QVariant(grade.value);
+                    model->setData(index, value);
                 }
             }
         }
