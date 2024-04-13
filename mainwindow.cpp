@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <bits/stl_pair.h>
-
 
 void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow);
 void get_subjects(int group_id, Ui::MainWindow &ui, QHBoxLayout& subject_menu_layout, MainWindow *mainWindow);
@@ -42,7 +40,7 @@ void MainWindow::on_group_button_clicked()
         QHBoxLayout *subject_menu_layout = qobject_cast<QHBoxLayout*>(ui->subject_menu->layout());
         if (subject_menu_layout) {
             QList<Subject> subjects = SubjectService::get_all_by_group_id(button->objectName().toLong());
-            for (Subject sb : subjects){
+            for (Subject &sb : subjects){
                 qDebug() << "Subject: " << sb.name;
                 QPushButton *pushButton = new QPushButton(sb.name, ui->subject_menu->widget());
                 pushButton->setObjectName(QString::number(sb.id));
@@ -105,7 +103,7 @@ void MainWindow::on_subject_button_clicked()
 void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow){
     QList<Group> groups = GroupService::get_all();
     int index = 0;
-    for (Group gr : groups){
+    for (Group &gr : groups){
         if (index == 0)
         {
             get_subjects(gr.id, ui, subject_menu_layout, mainWindow);
@@ -120,7 +118,7 @@ void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout
 
 void get_subjects(int group_id, Ui::MainWindow &ui, QHBoxLayout& subject_menu_layout, MainWindow *mainWindow){
     QList<Subject> subjects = SubjectService::get_all_by_group_id(group_id);
-    for (Subject sb : subjects){
+    for (Subject &sb : subjects){
         QPushButton *pushButton = new QPushButton(sb.name, ui.subject_menu->widget());
         pushButton->setObjectName(QString::number(sb.id));
         pushButton->setMaximumWidth(150);
@@ -128,5 +126,12 @@ void get_subjects(int group_id, Ui::MainWindow &ui, QHBoxLayout& subject_menu_la
         QObject::connect(pushButton, &QPushButton::clicked, mainWindow, &MainWindow::on_subject_button_clicked);
         subject_menu_layout.addWidget(pushButton);
     }
+}
+
+
+void MainWindow::on_grade_create_button_clicked()
+{
+    GradeCreateForm *grade_create_form = new GradeCreateForm(this->subject_id, this->group_id, this);
+    grade_create_form->show();
 }
 

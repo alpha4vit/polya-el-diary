@@ -28,6 +28,7 @@ public:
     GradeService();
     static QList<Grade> get_all_by_group_and_subject(long group_id, long subject_id);
     static QList<Grade> get_all_by_student_and_subject(long student_id, long subject_id);
+    static void create_new_grade(Grade &grade);
 };
 
 #endif // GRADESERVICE_H

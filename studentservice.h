@@ -27,6 +27,7 @@ class StudentService
 public:
     StudentService();
     static QList<Student> get_all();
+    static QList<Student> get_by_group(long group_id);
 };
 
 #endif // STUDENTSERVICE_H

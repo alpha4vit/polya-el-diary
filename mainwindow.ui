@@ -25,17 +25,17 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="grade_create_button">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>30</y>
-     <width>80</width>
-     <height>24</height>
+     <x>700</x>
+     <y>60</y>
+     <width>131</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Выйти</string>
+    <string>Добавить оценку</string>
    </property>
   </widget>
   <widget class="QScrollArea" name="group_menu">

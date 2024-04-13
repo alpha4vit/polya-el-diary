@@ -12,6 +12,7 @@ SOURCES += \
     aboutpage.cpp \
     dateconverter.cpp \
     dbconnection.cpp \
+    gradecreateform.cpp \
     gradeservice.cpp \
     groupservice.cpp \
     main.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     dateconverter.h \
     dbconnection.h \
     electronicdiary.h \
+    gradecreateform.h \
     gradeservice.h \
     groupservice.h \
     mainwindow.h \
@@ -36,6 +38,7 @@ HEADERS += \
 FORMS += \
     aboutpage.ui \
     electronicdiary.ui \
+    gradecreateform.ui \
     mainwindow.ui
 
 # Default rules for deployment.

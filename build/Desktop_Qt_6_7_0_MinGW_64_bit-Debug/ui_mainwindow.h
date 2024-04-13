@@ -25,7 +25,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QPushButton *pushButton;
+    QPushButton *grade_create_button;
     QScrollArea *group_menu;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout;
@@ -41,9 +41,9 @@ public:
         MainWindow->resize(850, 600);
         MainWindow->setMinimumSize(QSize(850, 600));
         MainWindow->setMaximumSize(QSize(850, 600));
-        pushButton = new QPushButton(MainWindow);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(720, 30, 80, 24));
+        grade_create_button = new QPushButton(MainWindow);
+        grade_create_button->setObjectName("grade_create_button");
+        grade_create_button->setGeometry(QRect(700, 60, 131, 41));
         group_menu = new QScrollArea(MainWindow);
         group_menu->setObjectName("group_menu");
         group_menu->setGeometry(QRect(0, 173, 141, 431));
@@ -76,7 +76,7 @@ public:
     void retranslateUi(QDialog *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Dialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "\320\222\321\213\320\271\321\202\320\270", nullptr));
+        grade_create_button->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \320\276\321\206\320\265\320\275\320\272\321\203", nullptr));
     } // retranslateUi
 
 };

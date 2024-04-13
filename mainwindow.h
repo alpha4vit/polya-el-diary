@@ -11,6 +11,8 @@
 #include <QStandardItemModel>
 #include <gradeservice.h>
 #include <dateconverter.h>
+#include <gradecreateform.h>
+
 
 namespace Ui {
 class MainWindow;
@@ -27,9 +29,12 @@ public:
     void on_subject_button_clicked();
     long group_id;
     long subject_id;
+private slots:
+    void on_grade_create_button_clicked();
 
 private:
     Ui::MainWindow *ui;
+    GradeCreateForm *grade_create_form;
 };
 
 #endif // MAINWINDOW_H
