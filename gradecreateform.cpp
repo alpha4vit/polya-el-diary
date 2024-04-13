@@ -6,6 +6,7 @@ GradeCreateForm::GradeCreateForm(long subject_id, long group_id, QWidget *parent
     , ui(new Ui::GradeCreateForm)
 {
     ui->setupUi(this);
+    ui->create_button->setEnabled(false);
     this->group_id = group_id;
     this->subject_id= subject_id;
     QComboBox *select = ui->student_selector;
@@ -16,8 +17,8 @@ GradeCreateForm::GradeCreateForm(long subject_id, long group_id, QWidget *parent
     if (students.count() > 0){
         this->selected_student_id = students.at(0).id;
     }
-    this->selected_date = QDateTime::currentDateTime();
-    ui->date_picker->setDateTime(this->selected_date);
+    this->selected_date = QDate::currentDate();
+    ui->date_picker->setDate(this->selected_date);
 }
 
 GradeCreateForm::~GradeCreateForm()
@@ -30,6 +31,7 @@ void GradeCreateForm::on_create_button_clicked()
     if (this->selected_value != NULL && this->selected_value <= 10 && this->selected_value >= 0){
         Grade grade(NULL, this->selected_value, this->selected_date.toString(), this->selected_student_id, this->subject_id);
         GradeService::create_new_grade(grade);
+        emit grade_created();
     }
     else {
         QMessageBox::critical(this, QString::asprintf("Введены некорректные данные!"), QString::asprintf("Некорректное значение отметки!"));
@@ -46,5 +48,13 @@ void GradeCreateForm::on_student_selector_activated(int index)
 void GradeCreateForm::on_grade_value_edit_textChanged(const QString &arg1)
 {
     this->selected_value = arg1.toInt();
+    ui->create_button->setEnabled(true);
+}
+
+
+
+void GradeCreateForm::on_date_picker_userDateChanged(const QDate &date)
+{
+    this->selected_date = date;
 }
 

@@ -18,6 +18,7 @@ QString UserService::getAllRecords()
     else {
         qDebug() << "Query execution failed:" << query.lastError().text();
     }
+    qDebug() << res;
     return res;
 }
 
@@ -27,6 +28,7 @@ bool UserService::isExists(QString username, QString password) {
     query.prepare("SELECT COUNT(*) FROM users WHERE username = :username AND password = :password");
     query.bindValue(":username", username);
     query.bindValue(":password", password);
+    getAllRecords();
     if (query.exec()) {
         if (query.next()) {
             int count = query.value(0).toInt();

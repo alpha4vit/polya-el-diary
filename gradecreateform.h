@@ -21,7 +21,10 @@ public:
     long group_id;
     long selected_student_id;
     int selected_value;
-    QDateTime selected_date;
+    QDate selected_date;
+
+signals:
+    void grade_created();
 
 private slots:
     void on_create_button_clicked();
@@ -29,6 +32,8 @@ private slots:
     void on_student_selector_activated(int index);
 
     void on_grade_value_edit_textChanged(const QString &arg1);
+
+    void on_date_picker_userDateChanged(const QDate &date);
 
 private:
     Ui::GradeCreateForm *ui;

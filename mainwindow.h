@@ -23,12 +23,14 @@ class MainWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(bool is_admin, QWidget *parent = nullptr);
     ~MainWindow();
     void on_group_button_clicked();
     void on_subject_button_clicked();
     long group_id;
     long subject_id;
+    bool is_admin;
+    void handle_grade_created();
 private slots:
     void on_grade_create_button_clicked();
 

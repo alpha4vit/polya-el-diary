@@ -22,7 +22,7 @@ void ElectronicDiary::on_pushButton_3_clicked()
     UserService userService;
     if (userService.isExists(username, password)){
         hide();
-        mainWindow = new MainWindow(this);
+        mainWindow = new MainWindow(true, this);
         mainWindow->show();
     }
     else {
@@ -35,7 +35,7 @@ void ElectronicDiary::on_pushButton_3_clicked()
 void ElectronicDiary::on_pushButton_clicked()
 {
     hide();
-    mainWindow = new MainWindow(this);
+    mainWindow = new MainWindow(false, this);
     mainWindow->show();
 }
 
