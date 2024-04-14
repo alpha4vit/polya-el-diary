@@ -79,7 +79,7 @@ void MainWindow::on_subject_button_clicked()
                 createdCols.insert(date, createdCols.count()+1);
             }
         }
-        QList<Student> students = StudentService::get_all();
+        QList<Student> students = StudentService::get_by_group(this->group_id);
         for (int i = 0; i < students.count(); ++i) {
             Student student = students.at(i);
             QStandardItem *itemName = new QStandardItem(student.lastname);
@@ -157,7 +157,7 @@ void MainWindow::handle_grade_created()
             createdCols.insert(date, createdCols.count()+1);
         }
     }
-    QList<Student> students = StudentService::get_all();
+    QList<Student> students = StudentService::get_by_group(this->group_id);
     for (int i = 0; i < students.count(); ++i) {
         Student student = students.at(i);
         QStandardItem *itemName = new QStandardItem(student.lastname);
@@ -175,6 +175,42 @@ void MainWindow::handle_grade_created()
             }
         }
     }
-
     ui->tableView->setModel(model);
 }
+
+
+// MainWindow:: create_table_model(){
+//     QStandardItemModel *model = new QStandardItemModel(this);
+//     model->setHorizontalHeaderLabels({ tr("Фамилия") });
+//     QList<Grade> grades = GradeService::get_all_by_group_and_subject(this->group_id, subject_id);
+//     QMap<QString, int> createdCols;
+//     for (int i = 0; i < grades.count(); ++i){
+//         QString date = DateConverter::convertFromDb(grades.at(i).date);
+//         qDebug() << date;
+//         if (!createdCols.contains(date))
+//         {
+//             model->insertColumn(createdCols.count()+1);
+//             model->setHorizontalHeaderItem(createdCols.count()+1, new QStandardItem(date));
+//             createdCols.insert(date, createdCols.count()+1);
+//         }
+//     }
+//     QList<Student> students = StudentService::get_by_group(this->group_id);
+//     for (int i = 0; i < students.count(); ++i) {
+//         Student student = students.at(i);
+//         QStandardItem *itemName = new QStandardItem(student.lastname);
+//         model->setItem(i, 0, itemName);
+//         for (int gr_ind = 0; gr_ind < grades.count(); ++gr_ind){
+//             Grade grade = grades.at(gr_ind);
+//             if (grade.student_id == student.id)
+//             {
+//                 QString date = DateConverter::convertFromDb(grade.date);
+//                 if (createdCols.contains(date)){
+//                     QModelIndex index = model->index(i, createdCols.value(date));
+//                     QVariant value = QVariant(grade.value);
+//                     model->setData(index, value);
+//                 }
+//             }
+//         }
+//     }
+//     return model;
+// }

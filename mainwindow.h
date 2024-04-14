@@ -31,6 +31,7 @@ public:
     long subject_id;
     bool is_admin;
     void handle_grade_created();
+    QStandardItemModel* create_table_model();
 private slots:
     void on_grade_create_button_clicked();
 

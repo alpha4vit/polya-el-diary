@@ -29,7 +29,7 @@ GradeCreateForm::~GradeCreateForm()
 void GradeCreateForm::on_create_button_clicked()
 {
     if (this->selected_value != NULL && this->selected_value <= 10 && this->selected_value >= 0){
-        Grade grade(NULL, this->selected_value, this->selected_date.toString(), this->selected_student_id, this->subject_id);
+        Grade grade(NULL, this->selected_value, DateConverter::convertForDb(this->selected_date), this->selected_student_id, this->subject_id);
         GradeService::create_new_grade(grade);
         emit grade_created();
     }
