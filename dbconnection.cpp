@@ -25,5 +25,8 @@ void DBConnection::createConnection()
     if (db.open()){
         qDebug() << "DBConnection setted!";
         this->db = db;
+        //закомментировать после первого запуска!!!!!
+        //createTables();
+
     }
 }
