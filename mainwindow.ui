@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Просмотр оценок</string>
   </property>
   <widget class="QPushButton" name="grade_create_button">
    <property name="geometry">

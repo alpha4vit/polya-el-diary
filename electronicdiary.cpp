@@ -1,11 +1,18 @@
 #include "electronicdiary.h"
 #include "ui_electronicdiary.h"
+#include <qpalette.h>
+#include <qpixmap.h>
 
 ElectronicDiary::ElectronicDiary(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ElectronicDiary)
 {
     ui->setupUi(this);
+    QPixmap back(":/res/IMG_6049.JPG");
+    back.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette pal;
+    pal.setBrush(QPalette::Window, back);
+    this->setPalette(pal);
 }
 
 ElectronicDiary::~ElectronicDiary()

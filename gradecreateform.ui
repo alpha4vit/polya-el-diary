@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Добавление оценки </string>
   </property>
   <widget class="QComboBox" name="student_selector">
    <property name="geometry">

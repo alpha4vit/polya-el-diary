@@ -49,3 +49,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     db-init.sql \
     el-diary.db
+
+RESOURCES += \
+    polinblin.qrc

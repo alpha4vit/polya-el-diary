@@ -19,6 +19,7 @@ GradeCreateForm::GradeCreateForm(long subject_id, long group_id, QWidget *parent
     }
     this->selected_date = QDate::currentDate();
     ui->date_picker->setDate(this->selected_date);
+
 }
 
 GradeCreateForm::~GradeCreateForm()

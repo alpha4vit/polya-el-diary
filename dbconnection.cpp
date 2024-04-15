@@ -15,7 +15,7 @@ DBConnection::DBConnection() {
 void DBConnection::createConnection()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("//Users//polinamaslennikova//polya-el-diary//databse.db");
+    db.setDatabaseName("//Users//polinamaslennikova//polya-el-diary//el-diary.db");
     // db.setHostName("localhost");
     // db.setPort(5432);
     // db.setDatabaseName("el-diary");
