@@ -32,8 +32,10 @@ public:
     bool is_admin;
     void handle_grade_created();
     QStandardItemModel* create_table_model();
+    const QString avg_grade_cell_name = "Ср. балл";
 private slots:
     void on_grade_create_button_clicked();
+    void on_search_input_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

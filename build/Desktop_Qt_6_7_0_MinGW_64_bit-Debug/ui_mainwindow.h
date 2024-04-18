@@ -14,6 +14,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QTableView>
@@ -33,6 +34,7 @@ public:
     QScrollArea *subject_menu;
     QWidget *scrollAreaWidgetContents_2;
     QHBoxLayout *horizontalLayout;
+    QLineEdit *search_input;
 
     void setupUi(QDialog *MainWindow)
     {
@@ -43,7 +45,7 @@ public:
         MainWindow->setMaximumSize(QSize(850, 600));
         grade_create_button = new QPushButton(MainWindow);
         grade_create_button->setObjectName("grade_create_button");
-        grade_create_button->setGeometry(QRect(700, 60, 131, 41));
+        grade_create_button->setGeometry(QRect(700, 10, 131, 41));
         group_menu = new QScrollArea(MainWindow);
         group_menu->setObjectName("group_menu");
         group_menu->setGeometry(QRect(0, 173, 141, 431));
@@ -67,6 +69,9 @@ public:
         horizontalLayout = new QHBoxLayout(scrollAreaWidgetContents_2);
         horizontalLayout->setObjectName("horizontalLayout");
         subject_menu->setWidget(scrollAreaWidgetContents_2);
+        search_input = new QLineEdit(MainWindow);
+        search_input->setObjectName("search_input");
+        search_input->setGeometry(QRect(150, 80, 341, 24));
 
         retranslateUi(MainWindow);
 
