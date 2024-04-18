@@ -43,7 +43,7 @@ create table if not exists group_subject(
                                             constraint group_subject_unique unique(group_id, subject_id)
 );
 
-insert into users(id, username, password) values(1, 'polina', 'polina');
+insert into users(id, username, password) values(1, '12345', '12345');
 
 insert into groups(id, name) values(1, '1к9393');
 insert into groups(id, name) values(2, '2к9392');

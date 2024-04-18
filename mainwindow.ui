@@ -28,7 +28,7 @@
   <widget class="QPushButton" name="grade_create_button">
    <property name="geometry">
     <rect>
-     <x>700</x>
+     <x>670</x>
      <y>60</y>
      <width>131</width>
      <height>41</height>

@@ -6,55 +6,148 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>444</width>
-    <height>310</height>
+    <width>399</width>
+    <height>301</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Добавление оценки </string>
+   <string>Добавление оценки</string>
   </property>
-  <widget class="QComboBox" name="student_selector">
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>50</y>
-     <width>331</width>
-     <height>31</height>
+     <x>0</x>
+     <y>0</y>
+     <width>401</width>
+     <height>301</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="grade_value_edit">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>100</y>
-     <width>331</width>
-     <height>28</height>
-    </rect>
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+border-radius: 6px;
+background-color: rgb(255, 255, 255);
+}</string>
    </property>
-  </widget>
-  <widget class="QDateEdit" name="date_picker">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>150</y>
-     <width>331</width>
-     <height>29</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="create_button">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>210</y>
-     <width>83</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Создать</string>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="styleSheet">
+       <string notr="true">font: 500 13pt &quot;SF Pro&quot;;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>Студент:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="student_selector">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+font: 13pt &quot;SF Pro&quot;;
+color: black;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+border-color: green;
+}
+</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">font: 500 13pt &quot;SF Pro&quot;;
+color: black;
+</string>
+      </property>
+      <property name="text">
+       <string>Оценка:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="grade_value_edit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+font: 13pt &quot;SF Pro&quot;;
+color: black;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+border-color: green;
+}
+</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="styleSheet">
+       <string notr="true">font: 500 13pt &quot;SF Pro&quot;;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>Выберите дату:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QDateEdit" name="date_picker">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QDateEdit {
+font: 13pt &quot;SF Pro&quot;;
+color: black;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+border-color: green;
+}
+</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="create_button">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 15pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Создать</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
