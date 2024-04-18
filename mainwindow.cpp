@@ -74,12 +74,7 @@ void MainWindow::on_subject_button_clicked()
 
 void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow){
     QList<Group> groups = GroupService::get_all();
-    int index = 0;
     for (Group &gr : groups){
-        if (index == 0)
-        {
-            get_subjects(gr.id, ui, subject_menu_layout, mainWindow);
-        }
         QPushButton *pushButton = new QPushButton(gr.name, ui.group_menu->widget());
         pushButton->setObjectName(QString::number(gr.id));
         QObject::connect(pushButton, &QPushButton::clicked, mainWindow, &MainWindow::on_group_button_clicked);
@@ -130,16 +125,25 @@ QStandardItemModel* MainWindow::create_table_model(){
             model->setHorizontalHeaderItem(createdCols.count()+1, new QStandardItem(date));
             createdCols.insert(date, createdCols.count()+1);
         }
+        if (i == grades.count()-1){
+            model->insertColumn(createdCols.count()+1);
+            model->setHorizontalHeaderItem(createdCols.count()+1, new QStandardItem(this->avg_grade_cell_name));
+            createdCols.insert(this->avg_grade_cell_name, createdCols.count()+1);
+        }
     }
     QList<Student> students = StudentService::get_by_group(this->group_id);
     for (int i = 0; i < students.count(); ++i) {
         Student student = students.at(i);
         QStandardItem *itemName = new QStandardItem(student.lastname);
         model->setItem(i, 0, itemName);
+        int grades_count = 0;
+        int grades_sum = 0;
         for (int gr_ind = 0; gr_ind < grades.count(); ++gr_ind){
             Grade grade = grades.at(gr_ind);
             if (grade.student_id == student.id)
             {
+                ++grades_count;
+                grades_sum+=grade.value;
                 QString date = DateConverter::convertFromDb(grade.date);
                 if (createdCols.contains(date)){
                     QModelIndex index = model->index(i, createdCols.value(date));
@@ -148,6 +152,16 @@ QStandardItemModel* MainWindow::create_table_model(){
                 }
             }
         }
+        QModelIndex index = model->index(i, createdCols.value(this->avg_grade_cell_name));
+        QVariant value = QVariant(grades_sum/grades_count);
+        model->setData(index, value);
+
     }
     return model;
 }
+
+void MainWindow::on_search_input_textChanged(const QString &arg1)
+{
+    qDebug() << arg1;
+}
+

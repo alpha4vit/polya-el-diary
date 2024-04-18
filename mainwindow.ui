@@ -29,7 +29,7 @@
    <property name="geometry">
     <rect>
      <x>700</x>
-     <y>60</y>
+     <y>10</y>
      <width>131</width>
      <height>41</height>
     </rect>
@@ -95,6 +95,16 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout"/>
    </widget>
+  </widget>
+  <widget class="QLineEdit" name="search_input">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>80</y>
+     <width>341</width>
+     <height>24</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>
