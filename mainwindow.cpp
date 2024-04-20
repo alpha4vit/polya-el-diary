@@ -34,7 +34,6 @@ void MainWindow::on_group_button_clicked()
 {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button) {
-        ui->tableView->setModel(nullptr);
         ui->grade_create_button->setEnabled(false);
         ui->search_input->setReadOnly(true);
         ui->search_input->setText("");
@@ -61,6 +60,7 @@ void MainWindow::on_group_button_clicked()
             }
         }
     }
+    ui->tableView->setModel(nullptr);
 }
 
 void MainWindow::on_subject_button_clicked()
