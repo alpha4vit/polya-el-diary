@@ -37,6 +37,7 @@ public:
     static QList<Student> get_all();
     static bool save(Student student);
     static QList<Student> get_by_group(long group_id, QString lastnameSearch);
+    static void updateRating(long student_id, double rating);
 };
 
 #endif // STUDENTSERVICE_H

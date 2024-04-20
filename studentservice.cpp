@@ -69,3 +69,12 @@ QList<Student> StudentService::get_by_group(long group_id, QString lastnameSearc
     return result;
 }
 
+void StudentService::updateRating(long student_id, double rating)
+{
+    QSqlQuery query(DBConnection::db);
+    query.prepare("update students set rating = :rating where id = :student_id");
+    query.bindValue(":rating", rating);
+    query.bindValue(":student_id", QVariant::fromValue(student_id));
+    query.exec();
+}
+

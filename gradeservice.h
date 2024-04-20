@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <DBConnection.h>
 #include <QSqlQuery>
+#include <studentservice.h>
 
 struct Grade{
 public:
@@ -29,6 +30,7 @@ public:
     static QList<Grade> get_all_by_group_and_subject(long group_id, long subject_id);
     static QList<Grade> get_all_by_student_and_subject(long student_id, long subject_id);
     static bool create_new_grade(Grade &grade);
+    static QList<Grade> get_all_by_student(long student_id);
 };
 
 #endif // GRADESERVICE_H

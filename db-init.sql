@@ -90,4 +90,4 @@ insert into group_subject (group_id, subject_id) values (2, 8);
 
 INSERT INTO students(name, surname, lastname, rating, group_id) values('Роман', 'Гуринович', 'Дмитриевич', 0.0, 1);
 INSERT INTO students(name, surname, lastname, rating, group_id) values('Антон', 'Малышев', 'Павлович', 0.0, 1);
-INSERT INTO students(name, surname, lastname, rating, group_id) values('Полина', 'Масленникова', 'Сергеевна', 10.0, 2);
+INSERT INTO students(name, surname, lastname, rating, group_id) values('Полина', 'Масленникова', 'Сергеевна', 0.0, 2);
