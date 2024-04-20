@@ -192,3 +192,10 @@ void MainWindow::on_student_create_button_clicked()
     connect(student_create_form, &StudentCreateForm::student_created, this, &MainWindow::handle_student_created);
 }
 
+
+void MainWindow::on_group_create_button_clicked()
+{
+    this->group_create_form = new GroupCreateForm(this);
+    this->group_create_form->show();
+}
+

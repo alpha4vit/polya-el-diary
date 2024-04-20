@@ -14,10 +14,12 @@ SOURCES += \
     dbconnection.cpp \
     gradecreateform.cpp \
     gradeservice.cpp \
+    groupcreateform.cpp \
     groupservice.cpp \
     main.cpp \
     electronicdiary.cpp \
     mainwindow.cpp \
+    multiselectcombobox.cpp \
     studentcreateform.cpp \
     studentservice.cpp \
     subjectservice.cpp \
@@ -30,8 +32,10 @@ HEADERS += \
     electronicdiary.h \
     gradecreateform.h \
     gradeservice.h \
+    groupcreateform.h \
     groupservice.h \
     mainwindow.h \
+    multiselectcombobox.h \
     studentcreateform.h \
     studentservice.h \
     subjectservice.h \
@@ -41,6 +45,7 @@ FORMS += \
     aboutpage.ui \
     electronicdiary.ui \
     gradecreateform.ui \
+    groupcreateform.ui \
     mainwindow.ui \
     studentcreateform.ui
 

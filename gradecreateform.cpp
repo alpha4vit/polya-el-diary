@@ -19,9 +19,6 @@ GradeCreateForm::GradeCreateForm(long subject_id, long group_id, QString lastnam
     }
     this->selected_date = QDate::currentDate();
     ui->date_picker->setDate(this->selected_date);
-
-    qDebug() << "dsadsa";
-
 }
 
 GradeCreateForm::~GradeCreateForm()

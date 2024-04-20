@@ -13,7 +13,7 @@
 #include <dateconverter.h>
 #include <gradecreateform.h>
 #include <studentcreateform.h>
-
+#include <groupcreateform.h>
 
 namespace Ui {
 class MainWindow;
@@ -41,10 +41,13 @@ private slots:
     void on_search_input_textChanged(const QString &arg1);
     void on_student_create_button_clicked();
 
+    void on_group_create_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     GradeCreateForm *grade_create_form;
     StudentCreateForm *student_create_form;
+    GroupCreateForm *group_create_form;
 };
 
 #endif // MAINWINDOW_H

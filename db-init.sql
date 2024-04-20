@@ -9,7 +9,9 @@ create table if not exists users
 create table if not exists groups
 (
     id   INTEGER primary key AUTOINCREMENT,
-    name varchar(10)
+    name varchar(10),
+    constraint unique_group_name
+            unique (name)
 );
 
 create table if not exists students

@@ -19,6 +19,7 @@ class SubjectService
 public:
     SubjectService();
     static QList<Subject> get_all_by_group_id(long group_id);
+    static QList<Subject> get_all();
 };
 
 #endif // SUBJECTSERVICE_H

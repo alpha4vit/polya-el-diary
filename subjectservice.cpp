@@ -21,3 +21,22 @@ QList<Subject> SubjectService::get_all_by_group_id(long subject_id)
     }
     return result;
 }
+
+QList<Subject> SubjectService::get_all()
+{
+    QList<Subject> result;
+    QSqlQuery query(DBConnection::db);
+    query.prepare("select * from subjects");
+    if (query.exec()){
+        while (query.next()) {
+            long id = query.value(0).toLongLong();
+            QString name = query.value(1).toString();
+            Subject subject(id, name);
+            result.append(subject);
+        }
+    }
+    else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+    return result;
+}
