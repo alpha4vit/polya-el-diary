@@ -13,7 +13,8 @@ QList<Student> StudentService::get_all()
             QString lastname = query.value(2).toString();
             QString surname = query.value(3).toString();
             double rating = query.value(4).toDouble();
-            Student student(id, name, surname, lastname, rating);
+            long group_id = query.value(6).toLongLong();
+            Student student(id, name, surname, lastname, rating, group_id);
             result.append(student);
         }
     }
@@ -23,11 +24,43 @@ QList<Student> StudentService::get_all()
     return result;
 }
 
-QList<Student> StudentService::get_by_group(long group_id)
+Student StudentService::save(Student student)
+{
+    QSqlQuery query(DBConnection::db);
+    query.prepare("insert into students(name, surname, lastname, rating, group_id) VALUES (:name, :surname, :lastname, 0.0, :group_id);");
+    query.bindValue(":name", student.name);
+    query.bindValue(":surname", student.surname);
+    query.bindValue(":lastname", student.lastname);
+    query.bindValue(":rating", student.rating);
+    query.bindValue(":group_id", QVariant::fromValue(student.group_id));
+    if (query.exec()){
+        while (query.next()) {
+            long id = query.value(0).toLongLong();
+            QString name = query.value(1).toString();
+            QString lastname = query.value(2).toString();
+            QString surname = query.value(3).toString();
+            double rating = query.value(4).toDouble();
+            long group_id = query.value(5).toLongLong();
+            Student student(id, name, surname, lastname, rating, group_id);
+            return student;
+        }
+    }
+}
+
+QList<Student> StudentService::get_by_group(long group_id, QString lastnameSearch)
 {
     QList<Student> result;
     QSqlQuery query(DBConnection::db);
-    query.prepare("select * from students s where s.group_id = :group_id order by s.lastname");
+    if (lastnameSearch != "" && lastnameSearch.trimmed() != ""){
+        lastnameSearch = lastnameSearch.trimmed();
+        lastnameSearch = lastnameSearch.toLower();
+        lastnameSearch[0] = lastnameSearch[0].toUpper();
+        query.prepare("SELECT * FROM students s WHERE s.group_id = :group_id AND LOWER(s.surname) LIKE LOWER(:lastnameSearch || '%') ORDER BY s.lastname");
+        query.bindValue(":lastnameSearch", QVariant::fromValue(lastnameSearch));
+    }
+    else {
+        query.prepare("select * from students s where s.group_id = :group_id order by s.lastname");
+    }
     query.bindValue(":group_id", QVariant::fromValue(group_id));
     if (query.exec()){
         while (query.next()) {
@@ -36,7 +69,8 @@ QList<Student> StudentService::get_by_group(long group_id)
             QString lastname = query.value(2).toString();
             QString surname = query.value(3).toString();
             double rating = query.value(4).toDouble();
-            Student student(id, name, surname, lastname, rating);
+            long group_id = query.value(5).toLongLong();
+            Student student(id, name, surname, lastname, rating, group_id);
             result.append(student);
         }
     }
@@ -45,3 +79,4 @@ QList<Student> StudentService::get_by_group(long group_id)
     }
     return result;
 }
+

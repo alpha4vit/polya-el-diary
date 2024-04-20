@@ -35,6 +35,8 @@ public:
     QWidget *scrollAreaWidgetContents_2;
     QHBoxLayout *horizontalLayout;
     QLineEdit *search_input;
+    QPushButton *group_create_button;
+    QPushButton *student_create_button;
 
     void setupUi(QDialog *MainWindow)
     {
@@ -45,7 +47,7 @@ public:
         MainWindow->setMaximumSize(QSize(850, 600));
         grade_create_button = new QPushButton(MainWindow);
         grade_create_button->setObjectName("grade_create_button");
-        grade_create_button->setGeometry(QRect(700, 10, 131, 41));
+        grade_create_button->setGeometry(QRect(700, 60, 131, 41));
         group_menu = new QScrollArea(MainWindow);
         group_menu->setObjectName("group_menu");
         group_menu->setGeometry(QRect(0, 173, 141, 431));
@@ -72,6 +74,13 @@ public:
         search_input = new QLineEdit(MainWindow);
         search_input->setObjectName("search_input");
         search_input->setGeometry(QRect(150, 80, 341, 24));
+        search_input->setReadOnly(false);
+        group_create_button = new QPushButton(MainWindow);
+        group_create_button->setObjectName("group_create_button");
+        group_create_button->setGeometry(QRect(10, 120, 121, 41));
+        student_create_button = new QPushButton(MainWindow);
+        student_create_button->setObjectName("student_create_button");
+        student_create_button->setGeometry(QRect(530, 60, 131, 41));
 
         retranslateUi(MainWindow);
 
@@ -80,8 +89,11 @@ public:
 
     void retranslateUi(QDialog *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Dialog", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \320\276\321\206\320\265\320\275\320\276\320\272", nullptr));
         grade_create_button->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \320\276\321\206\320\265\320\275\320\272\321\203", nullptr));
+        search_input->setPlaceholderText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\270\321\201\320\272 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260 \320\277\320\276 \321\204\320\260\320\274\320\270\320\273\320\270\320\270", nullptr));
+        group_create_button->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \320\263\321\200\321\203\320\277\320\277\321\203", nullptr));
+        student_create_button->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260", nullptr));
     } // retranslateUi
 
 };

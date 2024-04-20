@@ -28,7 +28,7 @@
   <widget class="QPushButton" name="grade_create_button">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>700</x>
      <y>60</y>
      <width>131</width>
      <height>41</height>
@@ -104,6 +104,38 @@
      <width>341</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="readOnly">
+    <bool>false</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Поиск студента по фамилии</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="group_create_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Создать группу</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="student_create_button">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>60</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Добавить студента</string>
    </property>
   </widget>
  </widget>

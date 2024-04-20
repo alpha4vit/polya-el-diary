@@ -1,7 +1,7 @@
 #include "gradecreateform.h"
 #include "ui_gradecreateform.h"
 
-GradeCreateForm::GradeCreateForm(long subject_id, long group_id, QWidget *parent)
+GradeCreateForm::GradeCreateForm(long subject_id, long group_id, QString lastnameSearch, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::GradeCreateForm)
 {
@@ -10,7 +10,7 @@ GradeCreateForm::GradeCreateForm(long subject_id, long group_id, QWidget *parent
     this->group_id = group_id;
     this->subject_id= subject_id;
     QComboBox *select = ui->student_selector;
-    QList<Student> students = StudentService::get_by_group(group_id);
+    QList<Student> students = StudentService::get_by_group(group_id, lastnameSearch);
     foreach (Student student, students) {
         select->addItem(student.lastname, QVariant::fromValue(student.id));
     }
@@ -33,8 +33,10 @@ void GradeCreateForm::on_create_button_clicked()
 {
     if (this->selected_value != NULL && this->selected_value <= 10 && this->selected_value >= 0){
         Grade grade(NULL, this->selected_value, DateConverter::convertForDb(this->selected_date), this->selected_student_id, this->subject_id);
-        GradeService::create_new_grade(grade);
-        emit grade_created();
+        if (GradeService::create_new_grade(grade))
+            emit grade_created();
+        else
+            QMessageBox::critical(this, QString::asprintf("Ошибка выставления отметки!"), QString::asprintf("У студента уже есть оценка на данное число!"));
     }
     else {
         QMessageBox::critical(this, QString::asprintf("Введены некорректные данные!"), QString::asprintf("Некорректное значение отметки!"));

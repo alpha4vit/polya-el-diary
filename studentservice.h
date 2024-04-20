@@ -13,12 +13,14 @@ public:
     QString surname;
     QString lastname;
     double rating;
-    Student(long id, QString name, QString surname, QString lastname, double rating){
+    long group_id;
+    Student(long id, QString name, QString surname, QString lastname, double rating, long group_id){
         this->id = id;
         this->name = name;
         this->lastname = lastname;
         this->surname = surname;
         this->rating = rating;
+        this->group_id = group_id;
     }
 };
 
@@ -27,7 +29,8 @@ class StudentService
 public:
     StudentService();
     static QList<Student> get_all();
-    static QList<Student> get_by_group(long group_id);
+    static Student save(Student student);
+    static QList<Student> get_by_group(long group_id, QString lastnameSearch);
 };
 
 #endif // STUDENTSERVICE_H

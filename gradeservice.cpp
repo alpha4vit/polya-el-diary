@@ -1,5 +1,7 @@
 #include "gradeservice.h"
 
+#include <QMessageBox>
+
 GradeService::GradeService() {}
 
 QList<Grade> GradeService::get_all_by_group_and_subject(long group_id, long subject_id)
@@ -50,7 +52,7 @@ QList<Grade> GradeService::get_all_by_student_and_subject(long student_id, long 
     return grades;
 }
 
-void GradeService::create_new_grade(Grade &grade)
+bool GradeService::create_new_grade(Grade &grade)
 {
     QList<Grade> grades;
     QSqlQuery query(DBConnection::db);
@@ -59,8 +61,5 @@ void GradeService::create_new_grade(Grade &grade)
     query.bindValue(":subject_id", QVariant::fromValue(grade.subject_id));
     query.bindValue(":value", QVariant::fromValue(grade.value));
     query.bindValue(":date", QVariant::fromValue(grade.date));
-    if (!query.exec())
-    {
-        qDebug() << "Query execution failed:" << query.lastError().text();
-    }
+    return query.exec();
 }

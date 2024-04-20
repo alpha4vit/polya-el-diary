@@ -16,12 +16,13 @@ class GradeCreateForm : public QDialog
     Q_OBJECT
 
 public:
-    explicit GradeCreateForm(long subject_id, long group_id, QWidget *parent = nullptr);
+    explicit GradeCreateForm(long subject_id, long group_id, QString lastnameSearch, QWidget *parent = nullptr);
     ~GradeCreateForm();
     long subject_id;
     long group_id;
     long selected_student_id;
     int selected_value;
+    QString lastnameSearch;
     QDate selected_date;
 
 signals:

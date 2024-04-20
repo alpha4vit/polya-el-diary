@@ -39,7 +39,7 @@ public:
 
     void retranslateUi(QDialog *AboutPage)
     {
-        AboutPage->setWindowTitle(QCoreApplication::translate("AboutPage", "Dialog", nullptr));
+        AboutPage->setWindowTitle(QCoreApplication::translate("AboutPage", "\320\236 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", nullptr));
     } // retranslateUi
 
 };

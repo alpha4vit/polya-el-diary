@@ -30,12 +30,14 @@ public:
     long group_id;
     long subject_id;
     bool is_admin;
+    QString lastnameSearch;
     void handle_grade_created();
-    QStandardItemModel* create_table_model();
+    QStandardItemModel* create_table_model(QString lastnameSearch);
     const QString avg_grade_cell_name = "Ср. балл";
 private slots:
     void on_grade_create_button_clicked();
     void on_search_input_textChanged(const QString &arg1);
+    void on_student_create_button_clicked();
 
 private:
     Ui::MainWindow *ui;
