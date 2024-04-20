@@ -18,6 +18,7 @@ SOURCES += \
     main.cpp \
     electronicdiary.cpp \
     mainwindow.cpp \
+    studentcreateform.cpp \
     studentservice.cpp \
     subjectservice.cpp \
     userservice.cpp
@@ -31,6 +32,7 @@ HEADERS += \
     gradeservice.h \
     groupservice.h \
     mainwindow.h \
+    studentcreateform.h \
     studentservice.h \
     subjectservice.h \
     userservice.h
@@ -39,7 +41,8 @@ FORMS += \
     aboutpage.ui \
     electronicdiary.ui \
     gradecreateform.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    studentcreateform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

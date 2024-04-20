@@ -152,6 +152,7 @@ public:
         GradeCreateForm->setWindowTitle(QCoreApplication::translate("GradeCreateForm", "\320\224\320\276\320\261\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \320\276\321\206\320\265\320\275\320\272\320\270", nullptr));
         label_3->setText(QCoreApplication::translate("GradeCreateForm", "\320\241\321\202\321\203\320\264\320\265\320\275\321\202:", nullptr));
         label_2->setText(QCoreApplication::translate("GradeCreateForm", "\320\236\321\206\320\265\320\275\320\272\320\260:", nullptr));
+        grade_value_edit->setPlaceholderText(QCoreApplication::translate("GradeCreateForm", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\267\320\275\320\260\321\207\320\265\320\275\320\270\320\265 \320\276\321\206\320\265\320\275\320\272\320\270", nullptr));
         label->setText(QCoreApplication::translate("GradeCreateForm", "\320\222\321\213\320\261\320\265\321\200\320\270\321\202\320\265 \320\264\320\260\321\202\321\203:", nullptr));
         create_button->setText(QCoreApplication::translate("GradeCreateForm", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214", nullptr));
     } // retranslateUi

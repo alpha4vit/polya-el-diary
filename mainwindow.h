@@ -12,6 +12,7 @@
 #include <gradeservice.h>
 #include <dateconverter.h>
 #include <gradecreateform.h>
+#include <studentcreateform.h>
 
 
 namespace Ui {
@@ -32,6 +33,7 @@ public:
     bool is_admin;
     QString lastnameSearch;
     void handle_grade_created();
+    void handle_student_created();
     QStandardItemModel* create_table_model(QString lastnameSearch);
     const QString avg_grade_cell_name = "Ср. балл";
 private slots:
@@ -42,6 +44,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     GradeCreateForm *grade_create_form;
+    StudentCreateForm *student_create_form;
 };
 
 #endif // MAINWINDOW_H

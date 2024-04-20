@@ -92,6 +92,9 @@ border-color: green;
 }
 </string>
       </property>
+      <property name="placeholderText">
+       <string>Введите значение оценки</string>
+      </property>
      </widget>
     </item>
     <item>

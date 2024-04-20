@@ -24,7 +24,7 @@ QList<Student> StudentService::get_all()
     return result;
 }
 
-Student StudentService::save(Student student)
+bool StudentService::save(Student student)
 {
     QSqlQuery query(DBConnection::db);
     query.prepare("insert into students(name, surname, lastname, rating, group_id) VALUES (:name, :surname, :lastname, 0.0, :group_id);");
@@ -33,18 +33,7 @@ Student StudentService::save(Student student)
     query.bindValue(":lastname", student.lastname);
     query.bindValue(":rating", student.rating);
     query.bindValue(":group_id", QVariant::fromValue(student.group_id));
-    if (query.exec()){
-        while (query.next()) {
-            long id = query.value(0).toLongLong();
-            QString name = query.value(1).toString();
-            QString lastname = query.value(2).toString();
-            QString surname = query.value(3).toString();
-            double rating = query.value(4).toDouble();
-            long group_id = query.value(5).toLongLong();
-            Student student(id, name, surname, lastname, rating, group_id);
-            return student;
-        }
-    }
+    return query.exec();
 }
 
 QList<Student> StudentService::get_by_group(long group_id, QString lastnameSearch)

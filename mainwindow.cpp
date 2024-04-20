@@ -179,8 +179,16 @@ void MainWindow::on_search_input_textChanged(const QString &arg1)
 }
 
 
+void MainWindow::handle_student_created()
+{
+    QStandardItemModel *model = this->create_table_model(this->lastnameSearch);
+    ui->tableView->setModel(model);
+}
+
 void MainWindow::on_student_create_button_clicked()
 {
-
+    this->student_create_form = new StudentCreateForm(this->group_id, this);
+    this->student_create_form->show();
+    connect(student_create_form, &StudentCreateForm::student_created, this, &MainWindow::handle_student_created);
 }
 

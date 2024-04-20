@@ -19,7 +19,9 @@ create table if not exists students
     surname  varchar(40),
     lastname varchar(40),
     rating   real default 0.0,
-    group_id bigint not null references groups (id)
+    group_id bigint not null references groups (id),
+    constraint unique_student
+            unique (name, lastname, surname)
 );
 
 create table if not exists subjects
@@ -34,7 +36,9 @@ create table if not exists grades
     value      int,
     date       timestamptz,
     student_id bigint not null references students (id),
-    subject_id bigint not null references subjects (id)
+    subject_id bigint not null references subjects (id),
+    constraint unique_grade_on_date_for_student
+            unique (date, student_id, subject_id)
 );
 
 create table if not exists group_subject(
