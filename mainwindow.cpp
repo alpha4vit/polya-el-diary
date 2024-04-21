@@ -155,7 +155,6 @@ QStandardItemModel* MainWindow::create_table_model(){
         QModelIndex index = model->index(i, createdCols.value(this->avg_grade_cell_name));
         QVariant value = QVariant(grades_sum/grades_count);
         model->setData(index, value);
-
     }
     return model;
 }
