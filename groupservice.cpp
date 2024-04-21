@@ -6,7 +6,7 @@ QList<Group> GroupService::get_all()
 {
     QList<Group> result;
     QSqlQuery query(DBConnection::db);
-    if (query.exec("SELECT * FROM groups")){
+    if (query.exec("SELECT * FROM groups g order by g.name")){
         while (query.next()) {
             long id = query.value(0).toLongLong();
             QString name = query.value(1).toString();
@@ -49,7 +49,7 @@ Group GroupService::get_by_name(QString name)
 {
     QList<Group> result;
     QSqlQuery query(DBConnection::db);
-    query.prepare("SELECT * FROM groups where name = :name");
+    query.prepare("SELECT * FROM groups g where g.name = :name");
     query.bindValue(":name", name);
     if (query.exec()){
         while (query.next()) {

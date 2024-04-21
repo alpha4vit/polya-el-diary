@@ -34,13 +34,13 @@ public:
     QString lastnameSearch;
     void handle_grade_created();
     void handle_student_created();
+    void handle_group_created();
     QStandardItemModel* create_table_model(QString lastnameSearch);
     const QString avg_grade_cell_name = "Ср. балл";
 private slots:
     void on_grade_create_button_clicked();
     void on_search_input_textChanged(const QString &arg1);
     void on_student_create_button_clicked();
-
     void on_group_create_button_clicked();
 
 private:

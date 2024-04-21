@@ -21,7 +21,9 @@ public:
     QString groupName = "";
     QList<int> selectedSubjects;
     QList<Subject> subjects;
-    bool checkCreationAvailability();
+    bool check_creation_availability();
+signals:
+    void group_created();
 private slots:
     void on_groupNameInput_textChanged(const QString &arg1);
 

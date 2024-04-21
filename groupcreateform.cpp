@@ -18,7 +18,7 @@ GroupCreateForm::~GroupCreateForm()
     delete ui;
 }
 
-bool GroupCreateForm::checkCreationAvailability()
+bool GroupCreateForm::check_creation_availability()
 {
     if (this->groupName != "" && !this->selectedSubjects.empty())
         ui->createButton->setEnabled(true);
@@ -33,7 +33,7 @@ void GroupCreateForm::on_groupNameInput_textChanged(const QString &arg1)
         this->groupName = this->groupName.toLower();
         this->groupName[0] = this->groupName[0].toUpper();
     }
-    checkCreationAvailability();
+    check_creation_availability();
 }
 
 
@@ -50,7 +50,7 @@ void GroupCreateForm::on_multiselect_currentTextChanged(const QString &arg1)
         }
     }
     this->selectedSubjects = selected;
-    checkCreationAvailability();
+    check_creation_availability();
 }
 
 
@@ -62,6 +62,7 @@ void GroupCreateForm::on_createButton_clicked()
         foreach (int subject_id, this->selectedSubjects) {
             GroupService::save_group_subject(group_id, subject_id);
         }
+        emit group_created();
     }
     else{
         QMessageBox::critical(this, QString::asprintf("Ошибка добавления группы!"), QString::asprintf("Группа с данным названием уже существует!"));

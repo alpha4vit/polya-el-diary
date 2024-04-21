@@ -6,7 +6,7 @@ QList<Subject> SubjectService::get_all_by_group_id(long subject_id)
 {
     QList<Subject> result;
     QSqlQuery query(DBConnection::db);
-    query.prepare("select s.* from group_subject gs JOIN subjects s on s.id = gs.subject_id WHERE gs.group_id = :subject_id");
+    query.prepare("select s.* from group_subject gs JOIN subjects s on s.id = gs.subject_id WHERE gs.group_id = :subject_id order by s.name");
     query.bindValue(":subject_id", QVariant::fromValue(subject_id));
     if (query.exec()){
         while (query.next()) {
@@ -26,7 +26,7 @@ QList<Subject> SubjectService::get_all()
 {
     QList<Subject> result;
     QSqlQuery query(DBConnection::db);
-    query.prepare("select * from subjects");
+    query.prepare("select * from subjects s order by s.name");
     if (query.exec()){
         while (query.next()) {
             long id = query.value(0).toLongLong();

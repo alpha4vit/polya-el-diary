@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow);
+void get_groups(QLayout& group_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow);
 void get_subjects(int group_id, Ui::MainWindow &ui, QHBoxLayout& subject_menu_layout, MainWindow *mainWindow);
 
 MainWindow::MainWindow(bool is_admin, QWidget *parent)
@@ -22,7 +22,7 @@ MainWindow::MainWindow(bool is_admin, QWidget *parent)
     QHBoxLayout *subject_menu_layout = new QHBoxLayout(ui->subject_menu->widget());
     ui->subject_menu->setLayout(subject_menu_layout);
     ui->group_menu->setLayout(group_menu_layout);
-    get_groups(*group_menu_layout, *subject_menu_layout, *this->ui, this);
+    get_groups(*group_menu_layout, *this->ui, this);
 }
 
 MainWindow::~MainWindow()
@@ -48,16 +48,7 @@ void MainWindow::on_group_button_clicked()
         }
         QHBoxLayout *subject_menu_layout = qobject_cast<QHBoxLayout*>(ui->subject_menu->layout());
         if (subject_menu_layout) {
-            QList<Subject> subjects = SubjectService::get_all_by_group_id(button->objectName().toLong());
-            for (Subject &sb : subjects){
-                qDebug() << "Subject: " << sb.name;
-                QPushButton *pushButton = new QPushButton(sb.name, ui->subject_menu->widget());
-                pushButton->setObjectName(QString::number(sb.id));
-                pushButton->setMaximumWidth(150);
-                pushButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-                connect(pushButton, &QPushButton::clicked, this, &MainWindow::on_subject_button_clicked);
-                subject_menu_layout->addWidget(pushButton);
-            }
+            get_subjects(this->group_id, *ui, *subject_menu_layout, this);
         }
     }
     ui->tableView->setModel(nullptr);
@@ -78,31 +69,41 @@ void MainWindow::on_subject_button_clicked()
     }
 }
 
-
-
-void get_groups(QVBoxLayout& group_menu_layout, QHBoxLayout& subject_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow){
+void get_groups(QLayout& group_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow){
     QList<Group> groups = GroupService::get_all();
+    QScrollArea *scrollArea = new QScrollArea(ui.group_menu->widget());
+    QWidget *scrollAreaContent = new QWidget();
+    QVBoxLayout *scrollAreaLayout = new QVBoxLayout(scrollAreaContent);
+    scrollAreaLayout->setSizeConstraint(QLayout::SetFixedSize);
     for (Group &gr : groups){
-        QPushButton *pushButton = new QPushButton(gr.name, ui.group_menu->widget());
+        QPushButton *pushButton = new QPushButton(gr.name);
         pushButton->setObjectName(QString::number(gr.id));
         QObject::connect(pushButton, &QPushButton::clicked, mainWindow, &MainWindow::on_group_button_clicked);
-        group_menu_layout.addWidget(pushButton);
+        scrollAreaLayout->addWidget(pushButton);
     }
-
+    scrollArea->setWidget(scrollAreaContent);
+    scrollArea->setWidgetResizable(true);
+    group_menu_layout.addWidget(scrollArea);
 }
 
 void get_subjects(int group_id, Ui::MainWindow &ui, QHBoxLayout& subject_menu_layout, MainWindow *mainWindow){
     QList<Subject> subjects = SubjectService::get_all_by_group_id(group_id);
+    QScrollArea *scrollArea = new QScrollArea(ui.subject_menu->widget());
+    QWidget *scrollAreaContent = new QWidget();
+    QHBoxLayout *scrollAreaLayout = new QHBoxLayout(scrollAreaContent);
+    scrollAreaLayout->setSizeConstraint(QLayout::SetFixedSize);
     for (Subject &sb : subjects){
-        QPushButton *pushButton = new QPushButton(sb.name, ui.subject_menu->widget());
+        QPushButton *pushButton = new QPushButton(sb.name);
         pushButton->setObjectName(QString::number(sb.id));
         pushButton->setMaximumWidth(150);
         pushButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         QObject::connect(pushButton, &QPushButton::clicked, mainWindow, &MainWindow::on_subject_button_clicked);
-        subject_menu_layout.addWidget(pushButton);
+        scrollAreaLayout->addWidget(pushButton);
     }
+    scrollArea->setWidget(scrollAreaContent);
+    scrollArea->setWidgetResizable(true);
+    subject_menu_layout.addWidget(scrollArea);
 }
-
 
 void MainWindow::on_grade_create_button_clicked()
 {
@@ -114,7 +115,7 @@ void MainWindow::on_grade_create_button_clicked()
 
 void MainWindow::handle_grade_created()
 {
-    QStandardItemModel *model = this->create_table_model(this->lastnameSearch      );
+    QStandardItemModel *model = this->create_table_model(this->lastnameSearch);
     ui->tableView->setModel(model);
 }
 
@@ -185,6 +186,21 @@ void MainWindow::handle_student_created()
     ui->tableView->setModel(model);
 }
 
+void MainWindow::handle_group_created()
+{
+    QLayout *group_menu_layout = ui->group_menu->layout();
+    QLayoutItem *child;
+    while ((child = ui->group_menu->layout()->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while ((child = ui->subject_menu->layout()->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    get_groups(*group_menu_layout, *ui, this);
+}
+
 void MainWindow::on_student_create_button_clicked()
 {
     this->student_create_form = new StudentCreateForm(this->group_id, this);
@@ -197,5 +213,6 @@ void MainWindow::on_group_create_button_clicked()
 {
     this->group_create_form = new GroupCreateForm(this);
     this->group_create_form->show();
+    connect(group_create_form, &GroupCreateForm::group_created, this, &MainWindow::handle_group_created);
 }
 
