@@ -64,3 +64,12 @@ Group GroupService::get_by_name(QString name)
     }
     return Group();
 }
+
+bool GroupService::delete_by_id(long group_id)
+{
+    StudentService::delete_all_by_group_id(group_id);
+    QSqlQuery query(DBConnection::db);
+    query.prepare("delete from groups where id = :group_id");
+    query.bindValue(":group_id", QVariant::fromValue(group_id));
+    return query.exec();
+}

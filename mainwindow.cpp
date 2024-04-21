@@ -20,7 +20,6 @@ MainWindow::MainWindow(bool is_admin, QWidget *parent)
     ui->grade_create_button->setEnabled(false);
     ui->student_create_button->setEnabled(false);
     ui->student_delete_button->setEnabled(false);
-    ui->group_delete_button->setEnabled(false);
     ui->search_input->setReadOnly(true);
     QVBoxLayout *group_menu_layout = new QVBoxLayout(ui->group_menu->widget());
     QHBoxLayout *subject_menu_layout = new QHBoxLayout(ui->subject_menu->widget());
@@ -191,7 +190,7 @@ void MainWindow::handle_students_updated()
     ui->tableView->setModel(model);
 }
 
-void MainWindow::handle_group_created()
+void MainWindow::handle_groups_updated()
 {
     QLayout *group_menu_layout = ui->group_menu->layout();
     QLayoutItem *child;
@@ -218,7 +217,7 @@ void MainWindow::on_group_create_button_clicked()
 {
     this->group_create_form = new GroupCreateForm(this);
     this->group_create_form->show();
-    connect(group_create_form, &GroupCreateForm::group_created, this, &MainWindow::handle_group_created);
+    connect(group_create_form, &GroupCreateForm::group_created, this, &MainWindow::handle_groups_updated);
 }
 
 
@@ -232,6 +231,8 @@ void MainWindow::on_student_delete_button_clicked()
 
 void MainWindow::on_group_delete_button_clicked()
 {
-
+    this->group_delete_form = new GroupDeleteForm(this);
+    this->group_delete_form->show();
+    connect(group_delete_form, &GroupDeleteForm::group_deleted, this, &MainWindow::handle_groups_updated);
 }
 

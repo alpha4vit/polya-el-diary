@@ -89,3 +89,12 @@ bool StudentService::delete_by_id(long student_id)
     return query.exec();
 }
 
+bool StudentService::delete_all_by_group_id(long group_id)
+{
+    QList<Student> students = get_by_group(group_id, "");
+    foreach (Student student, students) {
+        delete_by_id(student.id);
+    }
+    return true;
+}
+

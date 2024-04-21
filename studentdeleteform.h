@@ -18,8 +18,9 @@ public:
     ~StudentDeleteForm();
     long group_id;
     long selected_student_id;
-    bool agree_box_val;
+    bool agree_box_val = false;
     bool check_delete_availability();
+    void get_students();
 signals:
     void student_deleted();
 private slots:

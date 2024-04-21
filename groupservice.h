@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <dbconnection.h>
+#include <studentservice.h>
 
 struct Group{
 public:
@@ -27,6 +28,7 @@ public:
     static long save(Group group);
     static bool save_group_subject(long group_id, long subject_id);
     static Group get_by_name(QString name);
+    static bool delete_by_id(long group_id);
 };
 
 #endif // GROUPSERVICE_H

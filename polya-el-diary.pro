@@ -15,6 +15,7 @@ SOURCES += \
     gradecreateform.cpp \
     gradeservice.cpp \
     groupcreateform.cpp \
+    groupdeleteform.cpp \
     groupservice.cpp \
     main.cpp \
     electronicdiary.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     gradecreateform.h \
     gradeservice.h \
     groupcreateform.h \
+    groupdeleteform.h \
     groupservice.h \
     mainwindow.h \
     multiselectcombobox.h \
@@ -48,6 +50,7 @@ FORMS += \
     electronicdiary.ui \
     gradecreateform.ui \
     groupcreateform.ui \
+    groupdeleteform.ui \
     mainwindow.ui \
     studentcreateform.ui \
     studentdeleteform.ui
