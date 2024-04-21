@@ -50,6 +50,8 @@ private slots:
 
     void on_group_delete_button_clicked();
 
+    void on_export_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     GradeCreateForm *grade_create_form;

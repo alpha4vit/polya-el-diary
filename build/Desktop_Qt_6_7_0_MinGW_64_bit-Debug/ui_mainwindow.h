@@ -39,6 +39,7 @@ public:
     QPushButton *student_create_button;
     QPushButton *student_delete_button;
     QPushButton *group_delete_button;
+    QPushButton *export_button;
 
     void setupUi(QDialog *MainWindow)
     {
@@ -92,6 +93,9 @@ public:
         group_delete_button = new QPushButton(MainWindow);
         group_delete_button->setObjectName("group_delete_button");
         group_delete_button->setGeometry(QRect(20, 170, 121, 41));
+        export_button = new QPushButton(MainWindow);
+        export_button->setObjectName("export_button");
+        export_button->setGeometry(QRect(710, 30, 131, 41));
 
         retranslateUi(MainWindow);
 
@@ -107,6 +111,7 @@ public:
         student_create_button->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260", nullptr));
         student_delete_button->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260", nullptr));
         group_delete_button->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \320\263\321\200\321\203\320\277\320\277\321\203", nullptr));
+        export_button->setText(QCoreApplication::translate("MainWindow", "\320\255\320\272\321\201\320\277\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\262 PDF", nullptr));
     } // retranslateUi
 
 };

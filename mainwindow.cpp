@@ -1,5 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QPrinter>
+#include <QPainter>
+#include "xlsxdocument.h"
+#include "xlsxchartsheet.h"
+#include "xlsxcellrange.h"
+#include "xlsxchart.h"
+#include "xlsxrichstring.h"
+#include "xlsxworkbook.h"
+#include <QFileDialog>
 
 void get_groups(QLayout& group_menu_layout, Ui::MainWindow &ui, MainWindow *mainWindow);
 void get_subjects(int group_id, Ui::MainWindow &ui, QHBoxLayout& subject_menu_layout, MainWindow *mainWindow);
@@ -17,6 +26,7 @@ MainWindow::MainWindow(bool is_admin, QWidget *parent)
         ui->student_delete_button->setVisible(false);
         ui->group_delete_button->setVisible(false);
     }
+    ui->export_button->setEnabled(false);
     ui->grade_create_button->setEnabled(false);
     ui->student_create_button->setEnabled(false);
     ui->student_delete_button->setEnabled(false);
@@ -38,6 +48,7 @@ void MainWindow::on_group_button_clicked()
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button) {
         ui->grade_create_button->setEnabled(false);
+        ui->export_button->setEnabled(false);
         ui->search_input->setReadOnly(true);
         ui->search_input->setText("");
         QString objectName = button->objectName();
@@ -64,6 +75,7 @@ void MainWindow::on_subject_button_clicked()
         ui->grade_create_button->setEnabled(true);
         ui->student_create_button->setEnabled(true);
         ui->student_delete_button->setEnabled(true);
+        ui->export_button->setEnabled(true);
         ui->search_input->setReadOnly(false);
         long subject_id = button->objectName().toLong();
         qDebug() << "Clicked on button with object name:" << subject_id;
@@ -234,5 +246,45 @@ void MainWindow::on_group_delete_button_clicked()
     this->group_delete_form = new GroupDeleteForm(this);
     this->group_delete_form->show();
     connect(group_delete_form, &GroupDeleteForm::group_deleted, this, &MainWindow::handle_groups_updated);
+}
+
+void MainWindow::on_export_button_clicked()
+{
+    qDebug() << "Начало обработки кнопки экспорта";
+    try {
+        QAbstractItemModel *model = ui->tableView->model();
+        if (!model) {
+            qDebug() << "Модель данных TableView не установлена";
+            return;
+        }
+        int rowCount = model->rowCount();
+        int columnCount = model->columnCount();
+        QStringList columnNames;
+        for (int col = 0; col < columnCount; ++col) {
+            QVariant headerData = model->headerData(col, Qt::Horizontal);
+            columnNames << headerData.toString();
+        }
+        QString fileName = QFileDialog::getSaveFileName(this, "Сохранить Excel", QDir::homePath(), "Excel файлы (*.xlsx)");
+        qDebug() << "Выбран файл для сохранения:" << fileName;
+        if (!fileName.isEmpty()) {
+            QXlsx::Document xlsx;
+            for (int col = 0; col < columnCount; ++col) {
+                xlsx.write(1, col + 1, columnNames.at(col));
+            }
+            for (int row = 0; row < rowCount; ++row) {
+                for (int col = 0; col < columnCount; ++col) {
+                    QModelIndex index = model->index(row, col);
+                    QVariant data = model->data(index);
+                    xlsx.write(row + 2, col + 1, data.toString());
+                }
+            }
+            xlsx.saveAs(fileName);
+            qDebug() << "Файл успешно сохранен";
+        } else {
+            qDebug() << "Пользователь отменил выбор файла";
+        }
+    } catch (const std::exception& e) {
+        qDebug() << "Произошло исключение при сохранении файла Excel:" << e.what();
+    }
 }
 
