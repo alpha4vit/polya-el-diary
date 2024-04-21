@@ -69,12 +69,23 @@ QList<Student> StudentService::get_by_group(long group_id, QString lastnameSearc
     return result;
 }
 
-void StudentService::updateRating(long student_id, double rating)
+void StudentService::update_rating(long student_id, double rating)
 {
     QSqlQuery query(DBConnection::db);
     query.prepare("update students set rating = :rating where id = :student_id");
     query.bindValue(":rating", rating);
     query.bindValue(":student_id", QVariant::fromValue(student_id));
     query.exec();
+}
+
+bool StudentService::delete_by_id(long student_id)
+{
+    QSqlQuery query(DBConnection::db);
+    query.prepare("delete from grades g where g.student_id = :student_id");
+    query.bindValue(":student_id", QVariant::fromValue(student_id));
+    query.exec();
+    query.prepare("delete from students where id = :student_id");
+    query.bindValue(":student_id", QVariant::fromValue(student_id));
+    return query.exec();
 }
 

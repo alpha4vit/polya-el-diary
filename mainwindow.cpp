@@ -14,9 +14,13 @@ MainWindow::MainWindow(bool is_admin, QWidget *parent)
         ui->grade_create_button->setVisible(false);
         ui->group_create_button->setVisible(false);
         ui->student_create_button->setVisible(false);
+        ui->student_delete_button->setVisible(false);
+        ui->group_delete_button->setVisible(false);
     }
     ui->grade_create_button->setEnabled(false);
     ui->student_create_button->setEnabled(false);
+    ui->student_delete_button->setEnabled(false);
+    ui->group_delete_button->setEnabled(false);
     ui->search_input->setReadOnly(true);
     QVBoxLayout *group_menu_layout = new QVBoxLayout(ui->group_menu->widget());
     QHBoxLayout *subject_menu_layout = new QHBoxLayout(ui->subject_menu->widget());
@@ -60,6 +64,7 @@ void MainWindow::on_subject_button_clicked()
     if (button) {
         ui->grade_create_button->setEnabled(true);
         ui->student_create_button->setEnabled(true);
+        ui->student_delete_button->setEnabled(true);
         ui->search_input->setReadOnly(false);
         long subject_id = button->objectName().toLong();
         qDebug() << "Clicked on button with object name:" << subject_id;
@@ -180,7 +185,7 @@ void MainWindow::on_search_input_textChanged(const QString &arg1)
 }
 
 
-void MainWindow::handle_student_created()
+void MainWindow::handle_students_updated()
 {
     QStandardItemModel *model = this->create_table_model(this->lastnameSearch);
     ui->tableView->setModel(model);
@@ -205,7 +210,7 @@ void MainWindow::on_student_create_button_clicked()
 {
     this->student_create_form = new StudentCreateForm(this->group_id, this);
     this->student_create_form->show();
-    connect(student_create_form, &StudentCreateForm::student_created, this, &MainWindow::handle_student_created);
+    connect(student_create_form, &StudentCreateForm::student_created, this, &MainWindow::handle_students_updated);
 }
 
 
@@ -214,5 +219,19 @@ void MainWindow::on_group_create_button_clicked()
     this->group_create_form = new GroupCreateForm(this);
     this->group_create_form->show();
     connect(group_create_form, &GroupCreateForm::group_created, this, &MainWindow::handle_group_created);
+}
+
+
+void MainWindow::on_student_delete_button_clicked()
+{
+    this->student_delete_form = new StudentDeleteForm(this->group_id, this);
+    this->student_delete_form->show();
+    connect(student_delete_form, &StudentDeleteForm::student_deleted, this, &MainWindow::handle_students_updated);
+}
+
+
+void MainWindow::on_group_delete_button_clicked()
+{
+
 }
 

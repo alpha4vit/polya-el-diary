@@ -37,8 +37,14 @@ create table if not exists grades
     id         INTEGER primary key AUTOINCREMENT,
     value      int,
     date       timestamptz,
-    student_id bigint not null references students (id),
-    subject_id bigint not null references subjects (id),
+    student_id bigint not null
+        constraint grades_students_id_fk
+        references students
+        on delete cascade,
+    subject_id bigint not null
+        constraint grades_subjects_id_fk
+        references subjects
+        on delete cascade,
     constraint unique_grade_on_date_for_student
             unique (date, student_id, subject_id)
 );

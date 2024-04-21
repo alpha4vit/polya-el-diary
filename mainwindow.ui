@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>850</width>
-    <height>600</height>
+    <height>650</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>850</width>
-    <height>600</height>
+    <height>650</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>850</width>
-    <height>600</height>
+    <height>650</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
   <widget class="QPushButton" name="grade_create_button">
    <property name="geometry">
     <rect>
-     <x>700</x>
-     <y>30</y>
+     <x>710</x>
+     <y>80</y>
      <width>131</width>
      <height>41</height>
     </rect>
@@ -41,8 +41,8 @@
   <widget class="QScrollArea" name="group_menu">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>170</y>
+     <x>10</x>
+     <y>220</y>
      <width>141</width>
      <height>421</height>
     </rect>
@@ -74,8 +74,8 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>170</y>
+     <x>160</x>
+     <y>220</y>
      <width>681</width>
      <height>421</height>
     </rect>
@@ -84,8 +84,8 @@
   <widget class="QScrollArea" name="subject_menu">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>83</y>
+     <x>160</x>
+     <y>133</y>
      <width>681</width>
      <height>81</height>
     </rect>
@@ -108,8 +108,8 @@
   <widget class="QLineEdit" name="search_input">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>50</y>
+     <x>160</x>
+     <y>100</y>
      <width>341</width>
      <height>24</height>
     </rect>
@@ -124,7 +124,7 @@
   <widget class="QPushButton" name="group_create_button">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>120</y>
      <width>121</width>
      <height>41</height>
@@ -137,7 +137,7 @@
   <widget class="QPushButton" name="student_create_button">
    <property name="geometry">
     <rect>
-     <x>530</x>
+     <x>540</x>
      <y>30</y>
      <width>131</width>
      <height>41</height>
@@ -145,6 +145,32 @@
    </property>
    <property name="text">
     <string>Добавить студента</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="student_delete_button">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>80</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Удалить студента</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="group_delete_button">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>170</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Удалить группу</string>
    </property>
   </widget>
  </widget>

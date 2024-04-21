@@ -14,6 +14,7 @@
 #include <gradecreateform.h>
 #include <studentcreateform.h>
 #include <groupcreateform.h>
+#include <studentdeleteform.h>
 
 namespace Ui {
 class MainWindow;
@@ -33,7 +34,7 @@ public:
     bool is_admin;
     QString lastnameSearch;
     void handle_grade_created();
-    void handle_student_created();
+    void handle_students_updated();
     void handle_group_created();
     QStandardItemModel* create_table_model(QString lastnameSearch);
     const QString avg_grade_cell_name = "Ср. балл";
@@ -43,11 +44,16 @@ private slots:
     void on_student_create_button_clicked();
     void on_group_create_button_clicked();
 
+    void on_student_delete_button_clicked();
+
+    void on_group_delete_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     GradeCreateForm *grade_create_form;
     StudentCreateForm *student_create_form;
     GroupCreateForm *group_create_form;
+    StudentDeleteForm *student_delete_form;
 };
 
 #endif // MAINWINDOW_H

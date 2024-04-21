@@ -90,7 +90,7 @@ bool GradeService::create_new_grade(Grade &grade)
         foreach (Grade grade, grades) {
             sum += grade.value;
         }
-        StudentService::updateRating(grade.student_id, sum/grades.count());
+        StudentService::update_rating(grade.student_id, sum/grades.count());
         return true;
     }
     return false;

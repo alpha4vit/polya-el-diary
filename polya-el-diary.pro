@@ -21,6 +21,7 @@ SOURCES += \
     mainwindow.cpp \
     multiselectcombobox.cpp \
     studentcreateform.cpp \
+    studentdeleteform.cpp \
     studentservice.cpp \
     subjectservice.cpp \
     userservice.cpp
@@ -37,6 +38,7 @@ HEADERS += \
     mainwindow.h \
     multiselectcombobox.h \
     studentcreateform.h \
+    studentdeleteform.h \
     studentservice.h \
     subjectservice.h \
     userservice.h
@@ -47,7 +49,8 @@ FORMS += \
     gradecreateform.ui \
     groupcreateform.ui \
     mainwindow.ui \
-    studentcreateform.ui
+    studentcreateform.ui \
+    studentdeleteform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

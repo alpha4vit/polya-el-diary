@@ -37,20 +37,22 @@ public:
     QLineEdit *search_input;
     QPushButton *group_create_button;
     QPushButton *student_create_button;
+    QPushButton *student_delete_button;
+    QPushButton *group_delete_button;
 
     void setupUi(QDialog *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(850, 600);
-        MainWindow->setMinimumSize(QSize(850, 600));
-        MainWindow->setMaximumSize(QSize(850, 600));
+        MainWindow->resize(850, 650);
+        MainWindow->setMinimumSize(QSize(850, 650));
+        MainWindow->setMaximumSize(QSize(850, 650));
         grade_create_button = new QPushButton(MainWindow);
         grade_create_button->setObjectName("grade_create_button");
-        grade_create_button->setGeometry(QRect(700, 30, 131, 41));
+        grade_create_button->setGeometry(QRect(710, 80, 131, 41));
         group_menu = new QScrollArea(MainWindow);
         group_menu->setObjectName("group_menu");
-        group_menu->setGeometry(QRect(0, 170, 141, 421));
+        group_menu->setGeometry(QRect(10, 220, 141, 421));
         group_menu->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         group_menu->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         group_menu->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
@@ -63,10 +65,10 @@ public:
         group_menu->setWidget(scrollAreaWidgetContents);
         tableView = new QTableView(MainWindow);
         tableView->setObjectName("tableView");
-        tableView->setGeometry(QRect(150, 170, 681, 421));
+        tableView->setGeometry(QRect(160, 220, 681, 421));
         subject_menu = new QScrollArea(MainWindow);
         subject_menu->setObjectName("subject_menu");
-        subject_menu->setGeometry(QRect(150, 83, 681, 81));
+        subject_menu->setGeometry(QRect(160, 133, 681, 81));
         subject_menu->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
@@ -76,14 +78,20 @@ public:
         subject_menu->setWidget(scrollAreaWidgetContents_2);
         search_input = new QLineEdit(MainWindow);
         search_input->setObjectName("search_input");
-        search_input->setGeometry(QRect(140, 50, 341, 24));
+        search_input->setGeometry(QRect(160, 100, 341, 24));
         search_input->setReadOnly(false);
         group_create_button = new QPushButton(MainWindow);
         group_create_button->setObjectName("group_create_button");
-        group_create_button->setGeometry(QRect(10, 120, 121, 41));
+        group_create_button->setGeometry(QRect(20, 120, 121, 41));
         student_create_button = new QPushButton(MainWindow);
         student_create_button->setObjectName("student_create_button");
-        student_create_button->setGeometry(QRect(530, 30, 131, 41));
+        student_create_button->setGeometry(QRect(540, 30, 131, 41));
+        student_delete_button = new QPushButton(MainWindow);
+        student_delete_button->setObjectName("student_delete_button");
+        student_delete_button->setGeometry(QRect(540, 80, 131, 41));
+        group_delete_button = new QPushButton(MainWindow);
+        group_delete_button->setObjectName("group_delete_button");
+        group_delete_button->setGeometry(QRect(20, 170, 121, 41));
 
         retranslateUi(MainWindow);
 
@@ -97,6 +105,8 @@ public:
         search_input->setPlaceholderText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\270\321\201\320\272 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260 \320\277\320\276 \321\204\320\260\320\274\320\270\320\273\320\270\320\270", nullptr));
         group_create_button->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \320\263\321\200\321\203\320\277\320\277\321\203", nullptr));
         student_create_button->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260", nullptr));
+        student_delete_button->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260", nullptr));
+        group_delete_button->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \320\263\321\200\321\203\320\277\320\277\321\203", nullptr));
     } // retranslateUi
 
 };
