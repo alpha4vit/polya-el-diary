@@ -5,7 +5,6 @@ DateConverter::DateConverter() {}
 QString DateConverter::convertFromDb(QString date)
 {
     QDateTime dateTime = QDateTime::fromString(date, "yyyy-MM-dd");
-    //dateTime = dateTime.addDays(-1);
     return dateTime.toString("dd-MM-yyyy");
 }
 
