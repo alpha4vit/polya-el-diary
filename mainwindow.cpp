@@ -156,19 +156,34 @@ QStandardItemModel* MainWindow::create_table_model(QString lastnameSearch){
             createdCols.insert(this->avg_grade_cell_name, createdCols.count()+1);
         }
     }
-    QList<Student> students = StudentService::get_by_group(this->group_id, lastnameSearch);
+    QList<Student> students;
+    if (!this->underachiever_fl)
+    {
+        students = StudentService::get_by_group(this->group_id, lastnameSearch);
+    }
+    else {
+        students = StudentService::get_by_group_unachievers(this->group_id, lastnameSearch);
+    }
+    int total_grades_count = 0;
+    int total_grades_sum = 0;
+    int qualit_stud_count = 0;
     for (int i = 0; i < students.count(); ++i) {
         Student student = students.at(i);
         QStandardItem *itemName = new QStandardItem(student.lastname);
         model->setItem(i, 0, itemName);
         int grades_count = 0;
         int grades_sum = 0;
+        bool is_student_qualitative = true;
         for (int gr_ind = 0; gr_ind < grades.count(); ++gr_ind){
             Grade grade = grades.at(gr_ind);
             if (grade.student_id == student.id)
             {
                 ++grades_count;
+                ++total_grades_count;
+                total_grades_sum+=grade.value;
                 grades_sum+=grade.value;
+                if (grade.value < 7)
+                    is_student_qualitative = false;
                 QString date = DateConverter::convertFromDb(grade.date);
                 if (createdCols.contains(date)){
                     QModelIndex index = model->index(i, createdCols.value(date));
@@ -180,12 +195,32 @@ QStandardItemModel* MainWindow::create_table_model(QString lastnameSearch){
         if (grades_count!=0)
         {
             QModelIndex index = model->index(i, createdCols.value(this->avg_grade_cell_name));
-            QVariant value = QVariant(grades_sum/grades_count);
+            QVariant value = QVariant((double)grades_sum/grades_count);
             model->setData(index, value);
         }
-
+        if (is_student_qualitative){
+            qualit_stud_count++;
+        }
     }
+    calc_avg_group_grade(total_grades_count, total_grades_sum);
+    calc_group_qualit_coeff(students.count(), qualit_stud_count);
     return model;
+}
+
+void MainWindow::calc_avg_group_grade(int totalGradesCount, int totalGradesSum)
+{
+    double avg = (double)totalGradesSum / totalGradesCount;
+    if (totalGradesCount == 0)
+        avg = 0;
+    ui->avg_group_mark->setText("Средний балл группы: "+QString::number(avg, 'f', 2));
+}
+
+void MainWindow::calc_group_qualit_coeff(int students_count, int qualit_students_count)
+{
+    double coeff = (double)qualit_students_count / students_count * 100;
+    if (students_count == 0)
+        coeff = 0;
+    ui->coeff->setText("Коэффициент качества группы: "+QString::number(coeff, 'f', 2)+"%");
 }
 
 void MainWindow::on_search_input_textChanged(const QString &arg1)
@@ -286,5 +321,13 @@ void MainWindow::on_export_button_clicked()
     } catch (const std::exception& e) {
         qDebug() << "Произошло исключение при сохранении файла Excel:" << e.what();
     }
+}
+
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+    this->underachiever_fl = !this->underachiever_fl;
+    QStandardItemModel *model = this->create_table_model(this->lastnameSearch);
+    ui->tableView->setModel(model);
 }
 

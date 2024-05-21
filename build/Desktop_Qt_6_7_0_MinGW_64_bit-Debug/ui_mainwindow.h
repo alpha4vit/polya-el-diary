@@ -11,9 +11,11 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
@@ -40,6 +42,9 @@ public:
     QPushButton *student_delete_button;
     QPushButton *group_delete_button;
     QPushButton *export_button;
+    QLabel *avg_group_mark;
+    QLabel *coeff;
+    QCheckBox *checkBox;
 
     void setupUi(QDialog *MainWindow)
     {
@@ -96,6 +101,15 @@ public:
         export_button = new QPushButton(MainWindow);
         export_button->setObjectName("export_button");
         export_button->setGeometry(QRect(710, 30, 131, 41));
+        avg_group_mark = new QLabel(MainWindow);
+        avg_group_mark->setObjectName("avg_group_mark");
+        avg_group_mark->setGeometry(QRect(160, 20, 191, 16));
+        coeff = new QLabel(MainWindow);
+        coeff->setObjectName("coeff");
+        coeff->setGeometry(QRect(160, 60, 221, 21));
+        checkBox = new QCheckBox(MainWindow);
+        checkBox->setObjectName("checkBox");
+        checkBox->setGeometry(QRect(20, 20, 111, 81));
 
         retranslateUi(MainWindow);
 
@@ -112,6 +126,11 @@ public:
         student_delete_button->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\260", nullptr));
         group_delete_button->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \320\263\321\200\321\203\320\277\320\277\321\203", nullptr));
         export_button->setText(QCoreApplication::translate("MainWindow", "\320\255\320\272\321\201\320\277\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\262 PDF", nullptr));
+        avg_group_mark->setText(QString());
+        coeff->setText(QString());
+        checkBox->setText(QCoreApplication::translate("MainWindow", " \320\236\321\202\320\276\320\261\321\200\320\260\320\266\320\260\321\202\321\214\n"
+" \320\275\320\265\321\203\321\201\320\277\320\265\320\262\320\260\321\216\321\211\320\270\321\205\n"
+" \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\276\320\262", nullptr));
     } // retranslateUi
 
 };

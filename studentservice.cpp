@@ -44,11 +44,44 @@ QList<Student> StudentService::get_by_group(long group_id, QString lastnameSearc
         lastnameSearch = lastnameSearch.trimmed();
         lastnameSearch = lastnameSearch.toLower();
         lastnameSearch[0] = lastnameSearch[0].toUpper();
-        query.prepare("SELECT * FROM students s WHERE s.group_id = :group_id AND LOWER(s.surname) LIKE LOWER(:lastnameSearch || '%') ORDER BY s.lastname");
+        query.prepare("SELECT * FROM students s WHERE s.group_id = :group_id AND LOWER(s.surname) LIKE LOWER(:lastnameSearch || '%') ORDER BY s.surname");
         query.bindValue(":lastnameSearch", QVariant::fromValue(lastnameSearch));
     }
     else {
         query.prepare("select * from students s where s.group_id = :group_id order by s.lastname");
+    }
+    query.bindValue(":group_id", QVariant::fromValue(group_id));
+    if (query.exec()){
+        while (query.next()) {
+            long id = query.value(0).toLongLong();
+            QString name = query.value(1).toString();
+            QString lastname = query.value(2).toString();
+            QString surname = query.value(3).toString();
+            double rating = query.value(4).toDouble();
+            long group_id = query.value(5).toLongLong();
+            Student student(id, name, surname, lastname, rating, group_id);
+            result.append(student);
+        }
+    }
+    else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+    return result;
+}
+
+QList<Student> StudentService::get_by_group_unachievers(long group_id, QString lastnameSearch)
+{
+    QList<Student> result;
+    QSqlQuery query(DBConnection::db);
+    if (lastnameSearch != "" && lastnameSearch.trimmed() != ""){
+        lastnameSearch = lastnameSearch.trimmed();
+        lastnameSearch = lastnameSearch.toLower();
+        lastnameSearch[0] = lastnameSearch[0].toUpper();
+        query.prepare("SELECT * FROM students s JOIN grades g ON g.student_id = s.id WHERE g.value <= 3 AND s.group_id = :group_id AND LOWER(s.surname) LIKE LOWER(:lastnameSearch || '%') ORDER BY s.surname");
+        query.bindValue(":lastnameSearch", QVariant::fromValue(lastnameSearch));
+    }
+    else {
+        query.prepare("SELECT * FROM students s JOIN grades g ON g.student_id = s.id WHERE g.value <= 3 AND s.group_id = :group_id ORDER BY s.surname");
     }
     query.bindValue(":group_id", QVariant::fromValue(group_id));
     if (query.exec()){

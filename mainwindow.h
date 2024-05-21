@@ -40,6 +40,11 @@ public:
     void handle_groups_updated();
     QStandardItemModel* create_table_model(QString lastnameSearch);
     const QString avg_grade_cell_name = "Ср. балл";
+    void calc_avg_group_grade(int totalGradesCount, int totalGradesSum);
+    void calc_group_qualit_coeff(int students_count, int qualit_students_count);
+    bool underachiever_fl = false;
+    void get_underachiver_students();
+    QList<Student> filter_underachiever_students(QList<Student> students, QList<Grade> grades);
 private slots:
     void on_grade_create_button_clicked();
     void on_search_input_textChanged(const QString &arg1);
@@ -51,6 +56,8 @@ private slots:
     void on_group_delete_button_clicked();
 
     void on_export_button_clicked();
+
+    void on_checkBox_stateChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
