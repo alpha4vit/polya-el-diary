@@ -67,6 +67,7 @@ QXLSX_SOURCEPATH=./source/  # current QXlsx source path is ./source/
 include(./QXlsx.pri)
 
 DISTFILES += \
+    ../Downloads/back_4.JPEG \
     db-init.sql \
     el-diary.db
 

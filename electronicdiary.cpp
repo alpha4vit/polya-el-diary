@@ -28,7 +28,6 @@ void ElectronicDiary::on_pushButton_3_clicked()
     QString password = this->ui->lineEdit_2->text();
     UserService userService;
     if (userService.isExists(username, password)){
-        hide();
         mainWindow = new MainWindow(true, this);
         mainWindow->show();
     }
@@ -41,14 +40,12 @@ void ElectronicDiary::on_pushButton_3_clicked()
 
 void ElectronicDiary::on_pushButton_clicked()
 {
-    hide();
     mainWindow = new MainWindow(false, this);
     mainWindow->show();
 }
 
 void ElectronicDiary::on_pushButton_2_clicked()
 {
-    hide();
     about = new AboutPage();
     about->show();
 }

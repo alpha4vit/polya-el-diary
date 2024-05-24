@@ -1,0 +1,6 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/polinamaslennikova/polya-el-diary
+CMake Error at CMakeLists.txt:3 (cmake_minimum_required):
+  CMake 3.16 or higher is required.  You are running version 3.13.4
+
+
+-- Configuring incomplete, errors occurred!

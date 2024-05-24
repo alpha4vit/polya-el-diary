@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Создание группы</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+border-radius: 6px;
+background-color: rgb(255, 255, 255);
+}</string>
   </property>
   <widget class="MultiSelectComboBox" name="multiselect">
    <property name="geometry">
@@ -21,6 +27,18 @@
      <width>321</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+font: 13pt &quot;SF Pro&quot;;
+color: grey;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+background-color: white;
+border-color: green;
+}
+</string>
    </property>
    <property name="placeholderText">
     <string>Выберите предметы</string>
@@ -35,6 +53,18 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+font: 13pt &quot;SF Pro&quot;;
+color: black;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+background-color: white;
+border-color: green;
+}
+</string>
+   </property>
    <property name="placeholderText">
     <string>Введите название группы</string>
    </property>
@@ -42,11 +72,19 @@
   <widget class="QPushButton" name="createButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>180</y>
-     <width>80</width>
-     <height>24</height>
+     <x>40</x>
+     <y>170</y>
+     <width>321</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 15pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
    </property>
    <property name="text">
     <string>Создать</string>

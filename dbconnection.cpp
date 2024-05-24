@@ -15,18 +15,11 @@ DBConnection::DBConnection() {
 void DBConnection::createConnection()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("D:\\programming\\qt\\polya-el-diary\\el-diary.db");
-    // db.setHostName("localhost");
-    // db.setPort(5432);
-    // db.setDatabaseName("el-diary");
-    // db.setUserName("postgres");
-    // db.setPassword("root");
+    db.setDatabaseName("/Users/polinamaslennikova/polya-el-diary/el-diary.db");
 
     if (db.open()){
         qDebug() << "DBConnection setted!";
         this->db = db;
-        //закомментировать после первого запуска!!!!!
-        //createTables();
 
     }
 }

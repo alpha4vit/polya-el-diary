@@ -13,14 +13,32 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+border-radius: 6px;
+background-color: rgb(255, 255, 255);
+}</string>
+  </property>
   <widget class="QLineEdit" name="student_name_input">
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>50</y>
+     <y>110</y>
      <width>381</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+font: 13pt &quot;SF Pro&quot;;
+color: black;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+background-color: white;
+border-color: green;
+}
+</string>
    </property>
    <property name="placeholderText">
     <string>Введите имя студента</string>
@@ -30,10 +48,22 @@
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>110</y>
+     <y>50</y>
      <width>381</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+font: 13pt &quot;SF Pro&quot;;
+color: black;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+background-color: white;
+border-color: green;
+}
+</string>
    </property>
    <property name="placeholderText">
     <string>Введите фамилию студента</string>
@@ -48,6 +78,18 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+font: 13pt &quot;SF Pro&quot;;
+color: black;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+background-color: white;
+border-color: green;
+}
+</string>
+   </property>
    <property name="placeholderText">
     <string>Введите отчество студента</string>
    </property>
@@ -55,11 +97,19 @@
   <widget class="QPushButton" name="create_button">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>80</x>
      <y>240</y>
-     <width>171</width>
-     <height>41</height>
+     <width>381</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 15pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
    </property>
    <property name="text">
     <string>Создать</string>

@@ -11,49 +11,52 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Удалить группу</string>
   </property>
-  <widget class="QTextEdit" name="textEdit">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>90</y>
-     <width>291</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Внимание! Вы пытаетесь безвозвратно удалить группы, вместе с ним будут безвозвратно удалены данные о всех его студентах по всем предметам!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+border-radius: 6px;
+background-color: rgb(255, 255, 255);
+}</string>
+  </property>
   <widget class="QComboBox" name="group_select">
    <property name="geometry">
     <rect>
      <x>30</x>
      <y>50</y>
-     <width>321</width>
+     <width>331</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+font: 13pt &quot;SF Pro&quot;;
+color: grey;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+background-color: white;
+border-color: green;
+}
+</string>
    </property>
   </widget>
   <widget class="QPushButton" name="delete_button">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>30</x>
      <y>210</y>
-     <width>80</width>
-     <height>24</height>
+     <width>331</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 15pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
    </property>
    <property name="text">
     <string>Удалить!</string>
@@ -62,14 +65,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QCheckBox" name="agree_box">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>170</y>
      <width>331</width>
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: black;
+checkbox-color: black;</string>
+   </property>
    <property name="text">
     <string>Подтвердите что ознакомились с последствиями</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>70</y>
+     <width>481</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: black;</string>
+   </property>
+   <property name="text">
+    <string>Внимание! Вы пытаетесь безвозвратно удалить группы,
+      вместе с ним будут  безвозвратно удалены
+   данные о всех его студентах по всем предметам!</string>
    </property>
   </widget>
  </widget>

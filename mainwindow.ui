@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>Просмотр оценок</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QPushButton" name="grade_create_button">
    <property name="geometry">
     <rect>
@@ -33,6 +36,14 @@
      <width>131</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 12pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
    </property>
    <property name="text">
     <string>Добавить оценку</string>
@@ -90,6 +101,9 @@
      <height>81</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="widgetResizable">
     <bool>true</bool>
    </property>
@@ -114,6 +128,18 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+font: 13pt &quot;SF Pro&quot;;
+color: white;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+border-color: green;
+
+}
+</string>
+   </property>
    <property name="readOnly">
     <bool>false</bool>
    </property>
@@ -130,6 +156,14 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 12pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
+   </property>
    <property name="text">
     <string>Создать группу</string>
    </property>
@@ -142,6 +176,14 @@
      <width>131</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 12pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
    </property>
    <property name="text">
     <string>Добавить студента</string>
@@ -156,6 +198,14 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 12pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
+   </property>
    <property name="text">
     <string>Удалить студента</string>
    </property>
@@ -168,6 +218,14 @@
      <width>121</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 12pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
    </property>
    <property name="text">
     <string>Удалить группу</string>
@@ -182,8 +240,16 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+     border-radius: 10px;
+     background-color: rgb(37, 94, 0);
+	font: 600 12pt &quot;SF Pro&quot;;
+    font-color: white;
+}</string>
+   </property>
    <property name="text">
-    <string>Экспортировать в PDF</string>
+    <string>Экспорт в Excel</string>
    </property>
   </widget>
   <widget class="QLabel" name="avg_group_mark">
@@ -191,7 +257,7 @@
     <rect>
      <x>160</x>
      <y>20</y>
-     <width>191</width>
+     <width>241</width>
      <height>16</height>
     </rect>
    </property>
@@ -204,7 +270,7 @@
     <rect>
      <x>160</x>
      <y>60</y>
-     <width>221</width>
+     <width>271</width>
      <height>21</height>
     </rect>
    </property>
@@ -220,6 +286,9 @@
      <width>111</width>
      <height>81</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;</string>
    </property>
    <property name="text">
     <string> Отображать

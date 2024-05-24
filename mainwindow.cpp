@@ -19,6 +19,11 @@ MainWindow::MainWindow(bool is_admin, QWidget *parent)
 {
     this->is_admin = is_admin;
     ui->setupUi(this);
+    QPixmap back(":/res/back_4.JPG");
+    back.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette pal;
+    pal.setBrush(QPalette::Window, back);
+    this->setPalette(pal);
     if (!is_admin){
         ui->grade_create_button->setVisible(false);
         ui->group_create_button->setVisible(false);
