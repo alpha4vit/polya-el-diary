@@ -6,6 +6,11 @@ AboutPage::AboutPage(QWidget *parent)
     , ui(new Ui::AboutPage)
 {
     ui->setupUi(this);
+    QPixmap back(":/res/back_4.JPG");
+    back.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette pal;
+    pal.setBrush(QPalette::Window, back);
+    this->setPalette(pal);
 }
 
 AboutPage::~AboutPage()

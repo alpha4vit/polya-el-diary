@@ -33,7 +33,7 @@ void ElectronicDiary::on_pushButton_3_clicked()
     }
     else {
         QMessageBox::critical(this, QString::asprintf("Ошибка аутентификации!"), QString::asprintf("Перепроверьте корректность данных!"));
-    }
+            }
 
 }
 

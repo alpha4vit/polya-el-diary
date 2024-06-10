@@ -8,6 +8,7 @@ StudentCreateForm::StudentCreateForm(long group_id, QWidget *parent)
     ui->setupUi(this);
     this->group_id = group_id;
     ui->create_button->setEnabled(false);
+    this->parent = parent;
 }
 
 StudentCreateForm::~StudentCreateForm()
@@ -65,7 +66,7 @@ void StudentCreateForm::on_create_button_clicked()
     if (StudentService::save(student))
         emit student_created();
     else{
-         QMessageBox::critical(this, QString::asprintf("Ошибка добавления студента!"), QString::asprintf("Такой студент уже существует!"));
+        QMessageBox::critical(this->parent, QString::asprintf("Ошибка добавления студента!"), QString::asprintf("Такой студент уже существует!!"));
     }
 }
 

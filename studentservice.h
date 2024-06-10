@@ -40,7 +40,7 @@ public:
     static void update_rating(long student_id, double rating);
     static bool delete_by_id(long student_id);
     static bool delete_all_by_group_id(long group_id);
-    static QList<Student> get_by_group_unachievers(long group_id, QString lastnameSearch);
+    static QList<Student> get_by_group_unachievers(long group_id, long subject_id, QString lastnameSearch);
 };
 
 #endif // STUDENTSERVICE_H

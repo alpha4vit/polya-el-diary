@@ -39,6 +39,7 @@ private slots:
 
 private:
     Ui::GradeCreateForm *ui;
+    bool check_date();
 };
 
 #endif // GRADECREATEFORM_H

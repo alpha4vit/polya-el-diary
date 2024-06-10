@@ -167,11 +167,15 @@ QStandardItemModel* MainWindow::create_table_model(QString lastnameSearch){
         students = StudentService::get_by_group(this->group_id, lastnameSearch);
     }
     else {
-        students = StudentService::get_by_group_unachievers(this->group_id, lastnameSearch);
+        students = StudentService::get_by_group_unachievers(this->group_id, this->subject_id, lastnameSearch);
+        qDebug() << "romromromromromr";
     }
     int total_grades_count = 0;
     int total_grades_sum = 0;
     int qualit_stud_count = 0;
+    if (students.count() == 0){
+        QMessageBox::critical(this, QString::asprintf("Ошибка аутентификации!"), QString::asprintf("Нет студентов соответствуюших заданным параметрам!"));
+    }
     for (int i = 0; i < students.count(); ++i) {
         Student student = students.at(i);
         QStandardItem *itemName = new QStandardItem(student.lastname);
@@ -288,7 +292,7 @@ void MainWindow::on_group_delete_button_clicked()
     connect(group_delete_form, &GroupDeleteForm::group_deleted, this, &MainWindow::handle_groups_updated);
 }
 
-void MainWindow::on_export_button_clicked()
+void MainWindow::on_export_button_clicked()//экспорт в excel
 {
     qDebug() << "Начало обработки кнопки экспорта";
     try {

@@ -1,4 +1,3 @@
-
 #include "MultiSelectComboBox.h"
 #include <QLineEdit>
 #include <QCheckBox>

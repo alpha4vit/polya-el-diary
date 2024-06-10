@@ -22,6 +22,7 @@ public:
     QString studentSurname = "";
     QString studentLastname = "";
     void checkStudentCreateAvailability();
+    QWidget *parent;
 signals:
     void student_created();
 private slots:
