@@ -36,6 +36,7 @@ public:
     QPushButton *pushButton_3;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_4;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -172,10 +173,22 @@ public:
 
         verticalLayout->addWidget(pushButton_2);
 
+        pushButton_4 = new QPushButton(widget);
+        pushButton_4->setObjectName("pushButton_4");
+        sizePolicy3.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy3);
+        pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"     border-radius: 10px;\n"
+"     background-color: rgb(37, 94, 0);\n"
+"	font: 600 15pt \"SF Pro\";\n"
+"}"));
+
+        verticalLayout->addWidget(pushButton_4);
+
         ElectronicDiary->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ElectronicDiary);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 850, 24));
+        menubar->setGeometry(QRect(0, 0, 850, 21));
         ElectronicDiary->setMenuBar(menubar);
         statusbar = new QStatusBar(ElectronicDiary);
         statusbar->setObjectName("statusbar");
@@ -196,6 +209,7 @@ public:
         pushButton_3->setText(QCoreApplication::translate("ElectronicDiary", "\320\222\320\276\320\271\321\202\320\270", nullptr));
         pushButton->setText(QCoreApplication::translate("ElectronicDiary", "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214 \320\261\320\265\320\267 \320\262\321\205\320\276\320\264\320\260", nullptr));
         pushButton_2->setText(QCoreApplication::translate("ElectronicDiary", "\320\236 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("ElectronicDiary", "\320\222\321\213\320\271\321\202\320\270", nullptr));
     } // retranslateUi
 
 };

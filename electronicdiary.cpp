@@ -50,3 +50,10 @@ void ElectronicDiary::on_pushButton_2_clicked()
     about->show();
 }
 
+
+void ElectronicDiary::on_pushButton_4_clicked()
+{
+    this->close();
+
+}
+

@@ -48,7 +48,7 @@ QList<Student> StudentService::get_by_group(long group_id, QString lastnameSearc
         query.bindValue(":lastnameSearch", QVariant::fromValue(lastnameSearch));
     }
     else {
-        query.prepare("select * from students s where s.group_id = :group_id order by s.lastname");
+        query.prepare("select * from students s where s.group_id = :group_id order by s.surname");
     }
     query.bindValue(":group_id", QVariant::fromValue(group_id));
     if (query.exec()){

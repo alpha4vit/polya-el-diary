@@ -32,6 +32,19 @@
    <string>О программе</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="2">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>194</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item row="0" column="1">
     <widget class="QLabel" name="label_2">
      <property name="styleSheet">
@@ -56,19 +69,6 @@ font: 700 30pt &quot;SF Pro&quot;;</string>
      </property>
     </spacer>
    </item>
-   <item row="0" column="2">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>194</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="1" column="0" colspan="3">
     <widget class="QScrollArea" name="scrollArea">
      <property name="styleSheet">
@@ -87,97 +87,75 @@ background-color: black;
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>808</width>
-        <height>528</height>
+        <width>971</width>
+        <height>621</height>
        </rect>
       </property>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>251</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 15pt &quot;SF Pro&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Разработчик:    Масленникова П. С.</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>60</y>
-         <width>791</width>
-         <height>111</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 500 13pt &quot;SF Pro&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Программа &quot;Автоматизация процесса контроля обучения учащихся&quot; предназначена для контроля процесса обучения 
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="6" column="0" colspan="2">
+        <widget class="QLabel" name="label_5">
+         <property name="styleSheet">
+          <string notr="true">font: 500 13pt &quot;SF Pro&quot;;</string>
+         </property>
+         <property name="text">
+          <string>1. Войти в программу, ввести логин и пароль. Если вы не являетесь преподавателем, то нажать на кнопку &quot;Продолжить
+без входа&quot; и просмотреть ведомость с оценками.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">font: 700 18pt &quot;SF Pro&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Инструкция по использованию</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">font: 500 13pt &quot;SF Pro&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Программа &quot;Автоматизация процесса контроля обучения учащихся&quot; предназначена для контроля процесса обучения 
 В программе преподаватель может заполнять таблицу с оценками учащихся, программа подсчитывает средний балл по 
 каждому предмету, а также коэффицент качества. Также имеется возможность искать студентов по группе и выводить
 неуспевающих студентов </string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>300</x>
-         <y>160</y>
-         <width>271</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 700 18pt &quot;SF Pro&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Инструкция по использованию</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_5">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>180</y>
-         <width>801</width>
-         <height>81</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 500 13pt &quot;SF Pro&quot;;</string>
-       </property>
-       <property name="text">
-        <string>1. Войти в программу, ввести логин и пароль. Если вы не являетесь преподавателем, то нажать на кнопку &quot;Продолжить
-без входа&quot; и просмотреть ведомость с оценками.</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_6">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>270</y>
-         <width>311</width>
-         <height>221</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="polinblin.qrc">:/res/login.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">font: 15pt &quot;SF Pro&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Разработчик:    Масленникова П. С.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="maximumSize">
+          <size>
+           <width>600</width>
+           <height>400</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="polinblin.qrc">:/res/login.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
