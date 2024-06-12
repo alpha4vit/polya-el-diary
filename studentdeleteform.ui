@@ -75,7 +75,7 @@ border-color: green;
 }</string>
    </property>
    <property name="text">
-    <string>Удалить!</string>
+    <string>Удалить</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
