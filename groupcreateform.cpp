@@ -11,6 +11,7 @@ GroupCreateForm::GroupCreateForm(QWidget *parent)
     foreach (Subject subject, this->subjects) {
         ui->multiselect->addItem(subject.name, QVariant::fromValue(subject.id));
     }
+    this->parent = parent;
 }
 
 GroupCreateForm::~GroupCreateForm()
@@ -65,7 +66,7 @@ void GroupCreateForm::on_createButton_clicked()
         emit group_created();
     }
     else{
-        QMessageBox::critical(this, QString::asprintf("Ошибка добавления группы!"), QString::asprintf("Группа с данным названием уже существует!"));
+        QMessageBox::critical(this->parent, QString::asprintf("Ошибка добавления группы!"), QString::asprintf("Группа с данным названием уже существует!"));
     }
 }
 

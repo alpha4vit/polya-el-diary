@@ -22,6 +22,7 @@ public:
     QList<int> selectedSubjects;
     QList<Subject> subjects;
     bool check_creation_availability();
+    QWidget* parent;
 signals:
     void group_created();
 private slots:
