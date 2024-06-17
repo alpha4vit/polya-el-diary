@@ -58,7 +58,7 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8(""));
         widget = new QWidget(centralwidget);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(290, 130, 281, 301));
+        widget->setGeometry(QRect(290, 130, 281, 321));
         QSizePolicy sizePolicy1(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(1);
@@ -188,7 +188,7 @@ public:
         ElectronicDiary->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ElectronicDiary);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 850, 21));
+        menubar->setGeometry(QRect(0, 0, 850, 24));
         ElectronicDiary->setMenuBar(menubar);
         statusbar = new QStatusBar(ElectronicDiary);
         statusbar->setObjectName("statusbar");

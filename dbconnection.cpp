@@ -15,7 +15,7 @@ DBConnection::DBConnection() {
 void DBConnection::createConnection()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/Users/polinamaslennikova/polya-el-diary/el-diary.db");
+    db.setDatabaseName("D:/programming/qt/polya-el-diary/el-diary.db");
 
     if (db.open()){
         qDebug() << "DBConnection setted!";

@@ -41,7 +41,9 @@ void GradeCreateForm::on_create_button_clicked()
 }
 
 bool GradeCreateForm::check_date(){
-    return this->selected_date.daysTo(this->selected_date.addDays(1)) != 0;
+    bool fl = this->selected_date.toJulianDay() - QDate::currentDate().toJulianDay() <= 0;
+    qDebug() << fl;
+    return fl;
 }
 
 
